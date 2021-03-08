@@ -1,38 +1,44 @@
 // **** IMPORT PACKAGES  **** //
 
 const express = require('express');
+const { request } = require('http');
 const app = express();
 const port = 5000;
 const path = require('path');
+const endpointOne = 'http://api.thecatapi.com/v1/images/search';
+// const endpointTwo = 'http://official-joke-api.appspot.com/jokes/random';
 
 // **** MIDDLEWARE SET-UP **** //
 
-// Using static files from static directory:
+// Using static files from static directory
 app.use(express.static('static'));
-// app.use('/static', express.static('static'));
-// app.use('/static', express.static(path.join(__dirname, 'static')));
+app.use('/styles', express.static(__dirname + 'static/styles'));
+app.use('/scripts', express.static(__dirname + 'static/scripts'));
+app.use('/icons', express.static(__dirname + 'static/icons'));
 
-// Locate ejs (templating) (and views)
-app.set('views', path.join(__dirname, 'views'));
+// Setting views (EJS)
+app.set('views', './views');
 app.set('view engine', 'ejs');
 
 // **** ROUTING **** //
 
 app.get('/', function (req, res) {
-  // res.render('index.ejs');
-  // console.log('home');
-  // res.sendFile(path.join(__dirname + '/static/index.html'));
-  res.sendFile('index.html'); // vanuit static!
+  request(endpointOne, function (error, response, body){
+    let data = JSON.parse(body)
+    res.render('pages/index', {cat: data});
+  })
+});
+
+app.get('/', function (req, res) {
+  res.render('pages/index');
 });
 
 app.get('/favourites', function (req, res) {
-  console.log('Favourites list');
-  res.render('pages/favourites.ejs');
+  res.render('pages/favourites');
 });
 
 app.get('/favourites/:id', function (req, res) {
-  console.log('Detailpage');
-  res.render('pages/favouriteItem.ejs');
+  res.render('pages/favouriteItem');
 });
 
 app.listen(port, () => console.log(`App is running on port ${port}`));

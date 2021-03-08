@@ -1,31 +1,31 @@
-import '../vendor/routie.js';
+// import '../vendor/routie.js';
 
-/**
- * Handle the routes of all 'pages'
- *
- */
+// /**
+//  * Handle the routes of all 'pages'
+//  *
+//  */
 
-function routeHandler() {
-  routie({
-    '': function () {
-      sectionToggler('combo-generator');
-    },
-    favourites: function () {
-      sectionToggler('favourites');
-    },
-    'favourites/:id': function () {
-      sectionToggler('fav-item');
-    },
-    // 'favourites/:id': function (id) {
-    //   console.log(id);
-    //   sectionToggler(id)
-    //   addSection(id);
-    //   toggle(id);
-    //   const filtered = filterPlayers(playerData, id);
-    //   renderPlayerData(filtered);
-    // },
-  });
-}
+// function routeHandler() {
+//   routie({
+//     '': function () {
+//       sectionToggler('combo-generator');
+//     },
+//     favourites: function () {
+//       sectionToggler('favourites');
+//     },
+//     'favourites/:id': function () {
+//       sectionToggler('fav-item');
+//     },
+//     // 'favourites/:id': function (id) {
+//     //   console.log(id);
+//     //   sectionToggler(id)
+//     //   addSection(id);
+//     //   toggle(id);
+//     //   const filtered = filterPlayers(playerData, id);
+//     //   renderPlayerData(filtered);
+//     // },
+//   });
+// }
 
 // function addSection(id) {
 //   const teamSection = document.querySelector("ol");

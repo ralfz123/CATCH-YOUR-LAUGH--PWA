@@ -28,10 +28,14 @@ async function fetchData(url) {
 
 async function getData() {
   const likeBtn = document.getElementById('likeBtn');
-  likeBtn.setAttribute('disabled', true); // Set button to disabled, so that you're not able to like the unfetched data
-  const comboBtn = document.getElementById('comboBtn');
-  comboBtn.setAttribute('disabled', true); // Set button to disabled, so that you're not able to see other unfetched data
+  if (likeBtn) {
+    likeBtn.setAttribute('disabled', true); // Set button to disabled, so that you're not able to like the unfetched data
+  }
 
+  const comboBtn = document.getElementById('comboBtn');
+  if (comboBtn) {
+    comboBtn.setAttribute('disabled', true); // Set button to disabled, so that you're not able to see other unfetched data
+  }
   const dataCats = await fetchData(urlCats);
   const dataJokes = await fetchData(urlJokes);
 

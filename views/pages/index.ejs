@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%- include ('head') %>
-    <title>Home</title>
+    <%- include ('../partials/head') %>
+    <title>Home | CATCH YOUR LAUGH</title>
   </head>
-
   <body>
-    <header>
-      <h1>Hallo!</h1>
-    </header>
+    <%- include ('../partials/header') %>
 
-    <main><p>main</p></main>
+    <main>
+      <section id="combo-generator">
+        <div class="loader"></div>
+        <article id="cat-images">
+          <img id="image-cat" src="" alt="Image of a cat" />
+        </article>
 
-    <footer><p>footer</p></footer>
+        <article id="jokes">
+          <h3 id="joke"></h3>
+          <h3 id="punchline"></h3>
+        </article>
+
+        <button id="comboBtn">Another combo!</button>
+
+        <article id="like-area">
+          <h2>Like this combo!</h2>
+          <button id="likeBtn">❤️</button>
+          <a href="favourites">My Favourites</a>
+        </article>
+      </section>
+    </main>
+
+    <%- include ('../partials/footer') %>
   </body>
 </html>

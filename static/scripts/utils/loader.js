@@ -6,12 +6,13 @@
 
 function loader(state) {
   const loader = document.querySelector('.loader');
-
-  loader.classList = 'loader';
-  if (state == 'show') {
+  if (loader) {
     loader.classList = 'loader';
-  } else if (state == 'hide') {
-    loader.classList.add('hide');
+    if (state == 'show') {
+      loader.classList = 'loader';
+    } else if (state == 'hide') {
+      loader.classList.add('hide');
+    }
   }
 }
 export { loader };

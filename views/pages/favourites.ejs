@@ -1,2 +1,26 @@
-<div><p>Favourites list</p></div>
-<a href="/favourites/:id">FavItem</a>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ('../partials/head') %>
+    <title>Favourites | CATCH YOUR LAUGH</title>
+  </head>
+  <body>
+    <%- include ('../partials/header') %>
+
+    <main>
+      <section id="favourites">
+        <h1>Favourites</h1>
+        <a href="/">Back</a>
+        <!-- <a href="/favourites/:id">Detailpage</a> -->
+
+        <button class="deleteAllBtn">Delete all</button>
+
+        <ol>
+          <p>No favourite combo's yet 🙁</p>
+        </ol>
+      </section>
+    </main>
+
+    <%- include ('../partials/footer') %>
+  </body>
+</html>

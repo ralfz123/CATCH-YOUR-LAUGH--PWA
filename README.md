@@ -65,9 +65,9 @@ In this course I will convert the client side web application previously made We
 
 ### Plan van Aanpak
 1. Copy the WAFS app in this repo :white_check_mark:
-2. Delete the unnecessary features
-3. Install npm, Node.js and Express
-4. Refactor the code to a server side version (with Nodejs & Express)
+2. Delete the unnecessary features :white_check_mark:
+3. Install npm, Node.js and Express :white_check_mark:
+4. Refactor the code to a server side version (with Nodejs & Express) 
 5. Check if the application works
 
 ## :heart_eyes: Concept
@@ -131,7 +131,7 @@ This app is built, using:
 - [npm](https://www.npmjs.com/)
 - [Node.js server](https://nodejs.org/)
 - [Express router](https://expressjs.com/)
-- [ejs Templating engine]() 
+- [EJS Templating engine](https://ejs.co/)
 
 ## Tooling
 - rollup.js
@@ -144,7 +144,13 @@ This app is built, using:
 <summary>Expand</summary>
 
 #### App:
+- [x] UI is like the non-render-server-side app (WAFS)
+- [ ] static favicon rendered
+
 #### Code:
+- [ ] Pass data via views 
+- [ ] Server side fetch with npm package (request?)
+- [ ] responsive css added
 #### Readme:
 
 </details>
@@ -163,12 +169,12 @@ npm install
 
 3. To run the app   
 ```
-python -m SimpleHTTPServer 8000  
+npm start
 ```
 
-4. Go to [localhost](http://localhost:8000/) in the browser
+4. Go to [localhost](http://localhost:5000/) in the browser and voilà :sparkles:
 ```
-http://localhost:8000/
+http://localhost:5000/
 ```
 
 ## :file_folder: Sources

@@ -7,8 +7,10 @@ import { renderData } from './render.js';
  */
 
 const comboBtn = document.getElementById('comboBtn');
-comboBtn.addEventListener('click', async function () {
-  // Fetches data again
-  const receivedData = await getData();
-  renderData(receivedData.filteredDataCat, receivedData.filteredDataJoke);
-});
+if (comboBtn) {
+  comboBtn.addEventListener('click', async function () {
+    // Fetches data again
+    const receivedData = await getData();
+    renderData(receivedData.filteredDataCat, receivedData.filteredDataJoke);
+  });
+}

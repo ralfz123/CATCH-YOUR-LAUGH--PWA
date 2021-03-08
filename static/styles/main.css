@@ -84,15 +84,16 @@ main a:hover {
 }
 
 main section {
-  display: none;
+  /* display: none; */
   position: relative;
+  width: 50vw;
 }
 
-main section.active {
+/* main section.active {
   display: block;
-}
+} */
 
-#combo-generator.active {
+main section#combo-generator {
   display: grid;
   grid-template-areas:
     'cats   jokes'
@@ -103,7 +104,6 @@ main section.active {
   grid-auto-rows: minmax(15vh, auto);
   grid-gap: 5px;
 
-  width: 50em;
   margin: 0 auto;
   position: relative;
   justify-items: center;
@@ -316,7 +316,6 @@ main section.active {
 #favourites {
   margin: 0 auto;
   position: relative;
-  width: 50em;
   visibility: visible;
   text-align: center;
   border-radius: 10px;
@@ -440,7 +439,6 @@ main section.active {
 #fav-item {
   position: relative;
   margin: 0 auto;
-  width: 50em;
   height: 73vh;
   text-align: center;
   border-radius: 10px;
@@ -588,4 +586,10 @@ footer p a:hover {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #2c28bb;
+}
+
+@media all and (max-width: 50em) {
+  main section {
+    width: 90vw;
+  }
 }
