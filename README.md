@@ -1,8 +1,13 @@
-##### Progressive Web Apps-2021 @cmda-minor-web 2020 - 2021
+##### Progressive Web Apps @cmda-minor-web 2020 - 2021
 
 ![Badge stating project is licensed under MIT license](https://img.shields.io/github/license/ralfz123/progressive-web-apps-2021) ![Badge stating amount of issues open](https://img.shields.io/github/issues/ralfz123/progressive-web-apps-2021) [![](https://img.shields.io/badge/site--status-up-success)](https://ralfz123.github.io/progressive-web-apps-2021) [![Badges via shields.io](https://img.shields.io/badge/badges%20via-shields.io-brightgreen)](shields.io)
 
+# [title project]
+_Progressive Web Apps, a course of the minor Web Design & Development. It is a minor of the third year from the study [CMD](https://www.cmd-amsterdam.nl/)._
 
+
+*** 
+# Course info for me [begin]
 ## Learning goals
 - _You understand the difference between client side and server side rendering and you can apply server side rendering_
 in your application_
@@ -36,11 +41,10 @@ Doel: Optimize the Critical Rendering Path
 [Critical Rendering Path - slides Declan Rek](https://github.com/cmda-minor-web/progressive-web-apps-1920/blob/master/course/cmd-2020-critical-rendering-path.pdf)
 
 
+# Course info for me [end]
+***
+
 [Link to live version :rocket:](https://ralfz123.github.io/progressive-web-apps-2021)
-
-# [title project]
-_Progressive Web Apps, a course of the minor Web Design & Development. It is a minor of the third year from the study [CMD](https://www.cmd-amsterdam.nl/)._
-
 ### Table of Contents
 <table style="margin-left: auto; margin-right: auto;">
     <tr>
@@ -55,10 +59,19 @@ _Progressive Web Apps, a course of the minor Web Design & Development. It is a m
 </table>
 
 ## :rocket: Purpose of Project
-In this course I will convert the client side web application previously made Web App From Scratch into a server side rendered application. I also add functionalities based on the Service Worker and turn the application into a Progressive Web App. Ultimately I'm going to implement a series of optimisations to improve the performance of the application.
+In this course I will convert the client side web application previously made Web App From Scratch into a server side rendered application. I also add functionalities based on the Service Worker and turn the application into a Progressive Web App. Ultimately I'm going to implement a series of optimisations to improve the performance of the application. All the basic parts covered in this course are very useful to know when you later choose to make an app using a framework. All these parts are (almost) all automated in a framework and are therefore done for you. So it is helpful to know exactly how those parts work.
+
+- atomic design (wk1)
+
+### Plan van Aanpak
+1. Copy the WAFS app in this repo :white_check_mark:
+2. Delete the unnecessary features
+3. Install npm, Node.js and Express
+4. Refactor the code to a server side version (with Nodejs & Express)
+5. Check if the application works
 
 ## :heart_eyes: Concept
-~ **CAT**CH YOUR LAUGH ~
+This application is a _rebuild_ from the [**CAT**CH YOUR LAUGH-application](https://github.com/ralfz123/CATCH-YOUR-LAUGH). Here I focus on the client- and serverside rendering and am I able to create a **P**rogressive **W**eb **A**pp.
 
 **CAT**CH YOUR LAUGH is an application where you can amuse pictures of cats in combination with jokes :cat: :laughing: . You can use this app when the atmosphere is no longer good, or there is no discussion material for a while, or you just want to laugh hard. Then this is the solution! This combination will lead to endless laughter from the user! 
 
@@ -116,9 +129,14 @@ The data variables I used, are:
 ## :nerd_face: Technical summary
 This app is built, using:
 - [npm](https://www.npmjs.com/)
-- [Node.js](https://nodejs.org/)
-- [Express server](https://expressjs.com/)
+- [Node.js server](https://nodejs.org/)
+- [Express router](https://expressjs.com/)
+- [ejs Templating engine]() 
 
+## Tooling
+- rollup.js
+
+# Commands building
 ## Challenges / Inventions:
 
 ## To-Do's :pencil:
@@ -127,7 +145,7 @@ This app is built, using:
 
 #### App:
 #### Code:
-##### Readme:
+#### Readme:
 
 </details>
 
@@ -154,11 +172,16 @@ http://localhost:8000/
 ```
 
 ## :file_folder: Sources
-Credits to [Joost Faber](https://github.com/joostf) && [Koop](https://github.com/KoopReynders) && [Declan](https://github.com/decrek)for giving interesting lectures about PWA's and JavaScript and how to deal with it.
+Credits to [Joost Faber](https://github.com/joostf) && [Koop](https://github.com/KoopReynders) && [Declan](https://github.com/decrek) for giving interesting lectures about PWA's and JavaScript and how to deal with it.
 
 ### Code sources
-- Stackoverflow (n.d.). Searching for answers on dev questions - Stackoverflow. Retrieved 02 February 2021 from https://www.stackoverflow.com
+- Stackoverflow (n.d.). Searching for answers on dev questions - Stackoverflow. Retrieved 8 March 2021 from https://www.stackoverflow.com
 
+- npm (n.d.). Package manager with many packages - npm. Retrieved 8 March 2021 from https://www.npmjs.com
+
+- Node.js (n.d.). A Runtime engine server for Chrome V8 - Node.js. Retrieved 8 March 2021 from https://nodejs.org
+
+- Express (n.d.). Framework for Node.js - Express. Retrieved 8 March 2021 from https://expressjs.com/
 
 ## :cop: License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  

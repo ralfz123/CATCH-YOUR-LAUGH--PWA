@@ -1,0 +1,591 @@
+/* ------------------------------------------- */
+/*                   OVERALL                   */
+/* ------------------------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #f7f7f7;
+  --font-headers: 'Quicksand', sans-serif;
+  --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-headers);
+}
+
+/* ------------------------------------------- */
+/*                   BODY                      */
+/* ------------------------------------------- */
+body {
+  margin: 0 auto;
+  margin: 20px;
+  padding: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+/* ------------------------------------------- */
+/*                   HEADER                    */
+/* ------------------------------------------- */
+
+header {
+  margin: 0 auto;
+  text-align: center;
+}
+
+header h1 {
+  font-weight: 100;
+}
+
+/* ------------------------------------------- */
+/*                   MAIN                      */
+/* ------------------------------------------- */
+
+/* --/* --  Default button styling --/* -- */
+
+main button {
+  margin: 0;
+  text-decoration: none;
+  border: none;
+  font-family: var(--font-body);
+  color: white;
+  font-size: 1rem;
+  border-radius: 10px;
+  transition: 0.1s;
+  text-align: center;
+}
+
+main button:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+main button:focus {
+  outline: none;
+}
+
+/* --/* --  Default <a> styling --/* -- */
+
+main a {
+  border-radius: 10px;
+  background: #2c28bb;
+  color: white;
+  font-weight: 500;
+  padding: 0.5em 0.75em;
+  text-decoration: none;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+}
+
+main a:hover {
+  color: #2c28bb;
+  background: white;
+  border: 1px solid #2c28bb;
+}
+
+main section {
+  display: none;
+  position: relative;
+}
+
+main section.active {
+  display: block;
+}
+
+#combo-generator.active {
+  display: grid;
+  grid-template-areas:
+    'cats   jokes'
+    'button   button'
+    'like   like';
+
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: minmax(15vh, auto);
+  grid-gap: 5px;
+
+  width: 50em;
+  margin: 0 auto;
+  position: relative;
+  justify-items: center;
+}
+
+/* ------ CATS ------- */
+
+#cat-images {
+  grid-area: cats;
+  text-align: center;
+  height: 35vh;
+}
+
+#cat-images img {
+  width: 100%;
+  height: 35vh;
+  border-radius: 5px;
+}
+
+#cat-images img[alt] {
+  color: transparent;
+}
+
+/* ------ JOKES ------- */
+
+#jokes {
+  grid-area: jokes;
+  padding: 10px;
+  border: 3px dashed rgb(178, 178, 178);
+  border-radius: 5px;
+  font-family: var(--font-body);
+  width: 100%;
+  height: 100%;
+}
+
+#jokes h3 {
+  margin: 0;
+}
+
+#jokes #joke {
+  font-weight: normal;
+  margin-bottom: 15px;
+}
+
+#jokes #punchline {
+  font-weight: 700;
+  font-style: italic;
+}
+
+#jokes #id {
+  color: #22739370;
+  font-weight: normal;
+}
+
+/* ------ FAVOURITES LIST ------- */
+
+#like-area {
+  grid-area: like;
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+}
+
+#like-area h2 {
+  margin: 0;
+  transition: 0.2s;
+}
+
+#like-area a {
+  display: block;
+  padding: 8px 2px;
+  transition: background-color 0.1s;
+  width: 12em;
+  margin: 0 auto;
+}
+
+#like-area #likeBtn {
+  font-size: 4rem;
+  width: 3em;
+  height: 1.6em;
+  margin: 10px;
+  padding: 0;
+  background: none;
+  border: 2px solid crimson;
+  transition: 0.1s;
+  animation: glow 10000ms infinite;
+  background-image: linear-gradient(
+    to right,
+    #70e1f5 0%,
+    #ffd194 51%,
+    #70e1f5 100%
+  );
+  background-size: 200% auto;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 -5px #b7050594;
+  }
+  40% {
+    box-shadow: 0 0 20px #b7050594;
+  }
+  60% {
+    box-shadow: 0 0 20px #b7050594;
+  }
+  100% {
+    box-shadow: 0 0 -5px #b7050594;
+  }
+}
+
+#like-area #likeBtn:hover {
+  transform: translateY(-5px);
+  animation: none;
+  background-position: right center;
+}
+
+#like-area #likeBtn:active {
+  transform: translateY(5px);
+}
+
+#like-area #likeBtn:focus {
+  outline: 0;
+}
+
+#like-area #likeBtn:disabled {
+  opacity: 0.3;
+}
+
+#like-area #likeBtn:disabled:hover {
+  cursor: not-allowed;
+  transform: none;
+  background-position: left center;
+}
+
+.feedback-like {
+  grid-area: cats;
+  position: absolute;
+  z-index: 2;
+  font-size: 16rem;
+  width: 2em;
+  top: 0.5em;
+  left: 0.5em;
+  margin: 0 auto;
+  background: #828282;
+  animation: fadeOut 1.5s ease-in-out;
+  border-radius: 48px;
+  box-shadow: 0 0 20px 4px #0c0a0a;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* ------ Another combo button ------- */
+
+#comboBtn {
+  grid-area: button;
+  justify-self: center;
+  align-self: center;
+  padding: 8px 10px;
+  font-size: 1.6rem;
+  box-shadow: 0px 0px 9px 3px #544f4f94;
+  transition: 0.2s;
+  background-image: linear-gradient(
+    to right,
+    #70e1f5 0%,
+    #ffd194 51%,
+    #70e1f5 100%
+  );
+  background-size: 200% auto;
+  box-shadow: 0 0 10px rgb(122, 122, 122);
+  text-transform: uppercase;
+  color: #006979;
+  opacity: 0.8;
+}
+
+#comboBtn:hover {
+  background-position: right center;
+  opacity: 1;
+  color: #001215;
+  box-shadow: 0 0 20px #70e1f5;
+}
+
+#comboBtn:active {
+  transform: scale(0.9);
+}
+
+#comboBtn:disabled {
+  opacity: 0.3;
+}
+
+#comboBtn:disabled:hover {
+  cursor: not-allowed;
+  transform: none;
+  background-position: left center;
+  box-shadow: 0 0 10px rgb(122, 122, 122);
+  color: #006979;
+}
+
+/* ------- FAVOURITES ------- */
+
+#favourites {
+  margin: 0 auto;
+  position: relative;
+  width: 50em;
+  visibility: visible;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#favourites a {
+  position: absolute;
+  left: 10px;
+  top: 5px;
+}
+
+#favourites .deleteAllBtn {
+  width: 146px;
+  margin: 0 auto;
+  margin-top: 2em;
+  padding: 8px 2px;
+  display: block;
+  background-color: #a00808;
+}
+
+#favourites .deleteAllBtn:hover {
+  background-color: #820202;
+}
+
+#favourites ol {
+  list-style: none;
+  padding-left: 0px;
+  margin: 0;
+  height: 60vh;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.emptyStateShow {
+  visibility: visible;
+}
+
+.emptyStateHide {
+  visibility: hidden;
+}
+
+#favourites ol li {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 30% 50% 20%;
+  grid-template-rows: 100px auto;
+  align-items: center;
+  transition: background 0.1s;
+  padding: 8px;
+}
+
+#favourites ol li:nth-child(even) {
+  background: #e6e6e6;
+}
+
+#favourites ol li:hover {
+  background: rgba(169, 169, 169, 0.065);
+  background: rgba(0, 80, 239, 0.156);
+}
+
+#favourites ol li img {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+}
+
+#favourites ol li p {
+  justify-self: left;
+  text-align: left;
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+#favourites ol li p:nth-child(2) {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#favourites ol li div:nth-child(3) {
+  margin: 0 auto;
+  align-items: flex-end;
+}
+
+#favourites ol li .deleteBtn,
+#favourites ol li .checkBtn {
+  margin: 17px 0px;
+  width: 30px;
+  height: 30px;
+  display: block;
+  border-radius: 5px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#favourites ol li .deleteBtn {
+  background-image: url('../icons/trash.svg');
+}
+
+#favourites ol li .checkBtn {
+  background-image: url('../icons/info.svg');
+}
+
+#favourites ol li .deleteBtn:hover {
+  box-shadow: 0 0 3px 1px #dc1010;
+  transform: none;
+}
+
+#favourites ol li .checkBtn:hover {
+  box-shadow: 0 0 3px 1px #08943a;
+  transform: none;
+}
+
+#favourites ol li .checkBtn:focus,
+#favourites ol li .deleteBtn:focus {
+  transform: none;
+}
+
+/* ------- FAVOURITE ITEM (DETAIL PAGE) ------- */
+
+#fav-item {
+  position: relative;
+  margin: 0 auto;
+  width: 50em;
+  height: 73vh;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#fav-item a {
+  position: absolute;
+  left: 10px;
+  top: 5px;
+}
+
+#fav-item img {
+  width: 200px;
+  max-height: 450px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+#fav-item div {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#fav-item div p:first-child {
+  padding: 10px 58px;
+  background: #eaeaea;
+
+  font-weight: normal;
+  line-height: 1.5em;
+}
+
+#fav-item div p:nth-child(2) {
+  padding: 10px 58px;
+  background: #dadada;
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* ------------------------------------------- */
+/*                   FOOTER                    */
+/* ------------------------------------------- */
+footer {
+  background-color: #767c7f0d;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 5px 0px;
+  margin-top: 10px;
+}
+
+footer p {
+  margin: 3px 0px;
+}
+
+footer p a {
+  color: #000000;
+  text-decoration: none;
+  transition: 0.2s;
+  font-style: italic;
+}
+
+footer p a:hover {
+  color: rgb(34, 34, 147);
+}
+
+/* --/* ----- SCROLLBAR ---/* - */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #98dffb70;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #98dffb70;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #56cfff;
+}
+
+/* --/* ----- LOADER ---/* - */
+
+.loader {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  z-index: 10;
+  top: 10%;
+  left: 21em;
+}
+
+.loader:after {
+  content: ' ';
+  display: block;
+  width: 5em;
+  height: 5em;
+  margin: 8px;
+  border-radius: 50%;
+  border: 20px solid #7b78f7;
+  border-color: #7b78f7 transparent #7b78f7 transparent;
+  animation: loader 1.2s linear infinite;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.hide {
+  display: none;
+}
+
+/* --/* ----- SCROLLBAR ---/* - */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #2d28bb91;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2c28bb;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2c28bb;
+}

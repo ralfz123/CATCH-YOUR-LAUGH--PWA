@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CATCH YOUR LAUGH</title>
+    <link rel="shortcut icon" type="image/svg" href="./favicon.svg" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="./scripts/main.js" type="module"></script>
+  </head>
+  <body>
+    <header>
+      <h1><strong>CAT</strong>CH YOUR LAUGH 😹</h1>
+    </header>
+
+    <main>
+      <section id="combo-generator">
+        <div class="loader"></div>
+        <article id="cat-images">
+          <img id="image-cat" src="" alt="Image of a cat" />
+        </article>
+
+        <article id="jokes">
+          <h3 id="joke"></h3>
+          <h3 id="punchline"></h3>
+        </article>
+
+        <button id="comboBtn">Another combo!</button>
+
+        <article id="like-area">
+          <h2>Like this combo!</h2>
+          <button id="likeBtn">❤️</button>
+          <a href="/favourites">My Favourites</a>
+        </article>
+      </section>
+
+      <section id="favourites">
+        <h1>Favourites</h1>
+        <a href="#">Back</a>
+
+        <button class="deleteAllBtn">Delete all</button>
+
+        <ol>
+          <p>No favourite combo's yet 🙁</p>
+        </ol>
+      </section>
+
+      <section id="fav-item">
+        <a href="/favourites/:id">Back</a>
+        <h1></h1>
+
+        <img id="fav-item-image" src="" alt="fav-cat-image" />
+        <div>
+          <p id="fav-item-joke"></p>
+          <p id="fav-item-punchline"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Made by Ralf Zonneveld © 2021 - All rights reserved |
+        <a href="https://github.com/ralfz123/CATCH-YOUR-LAUGH" target="_blank"
+          >GitHub link</a
+        >
+      </p>
+      <p>
+        Used APIs:
+        <a href="https://thecatapi.com/" target="_blank">Cat images</a> &
+        <a href="https://github.com/15Dkatz/official_joke_api" target="_blank"
+          >Jokes</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>
