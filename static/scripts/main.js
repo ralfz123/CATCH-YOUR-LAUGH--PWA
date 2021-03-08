@@ -12,8 +12,8 @@ import { renderData } from './modules/render.js';
   // routeHandler();
 
   // Get data through fetch and put in a variable called receivedData
-  const receivedData = await getData();
+  // const receivedData = await getData();
 
   // Render that data
-  renderData(receivedData.filteredDataCat, receivedData.filteredDataJoke);
+  // renderData(receivedData.filteredDataCat, receivedData.filteredDataJoke);
 })();

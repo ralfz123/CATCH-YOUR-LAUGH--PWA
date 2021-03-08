@@ -11,8 +11,24 @@
       <section id="favourites">
         <h1>Favourites</h1>
         <a href="/">Back</a>
-        <!-- <a href="/favourites/:id">Detailpage</a> -->
 
+        <ul>
+          <!-- Make item (forEach) with new data object -->
+
+        <% dataCat.forEach(item => { %>
+          <li>
+            <img src="<%= dataCat.item.url %>" alt="" />
+            <div>
+              <p><%= dataJokes.setup %></p>
+              <p><%= dataJokes.punchline %></p>
+            </div>
+            <div>
+              <button class="checkBtn"></button>
+              <button class="deleteBtn"></button>
+            </div>
+          </li>
+          
+        </ul>
         <button class="deleteAllBtn">Delete all</button>
 
         <ol>

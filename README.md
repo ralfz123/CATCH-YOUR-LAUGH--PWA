@@ -148,6 +148,8 @@ This app is built, using:
 - [ ] static favicon rendered
 
 #### Code:
+- [x] Render data home
+- [ ] Not fetch when coming back at home
 - [ ] Pass data via views 
 - [ ] Server side fetch with npm package (request?)
 - [ ] responsive css added
