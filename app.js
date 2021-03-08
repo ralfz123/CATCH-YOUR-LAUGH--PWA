@@ -1,7 +1,8 @@
 // **** IMPORT PACKAGES  **** //
 
 const express = require('express');
-const { request } = require('http');
+// const { request } = require('http');
+const request = require('request');
 const app = express();
 const port = 5000;
 const path = require('path');
@@ -26,6 +27,7 @@ app.get('/', function (req, res) {
   request(endpointOne, function (error, response, body){
     let data = JSON.parse(body)
     res.render('pages/index', {cat: data});
+    console.log(data)
   })
 });
 
