@@ -45,13 +45,12 @@ app.get('/', async (req, res) => {
 
   // Render data
   res.render('index.ejs', { filteredDataCat, filteredDataJokes });
-  // set inputs to :disabled
 });
 
 app.post('/', function (req, res) {
   const favData = {
     // id: countFavItem(),
-    // cat: req.body.Image.src,
+    cat: req.body.cat,
     id: req.body.id,
     setup: req.body.joke,
     punchline: req.body.punchline, // rewrite without req.body
@@ -61,7 +60,6 @@ app.post('/', function (req, res) {
   checkDuplicateFavItems();
   console.log(favouritesArray);
 });
-
 
 // NOT WORKING - Making an id, so it can be showed at the detail page
 function countFavItem() {
@@ -87,8 +85,19 @@ app.get('/favourites', function (req, res) {
 });
 
 app.get('/favourites/:id', function (req, res) {
-  res.render('pages/favouriteItem');
-  // req.params.id - joke id
+    // Search id in array
+  const favData = findObject(req.params.id);
+
+  // show id object
+  console.log('object found:', favData);
+  res.render('pages/favouriteItem', { favData });
 });
+
+function findObject(id) {
+  function searchThroughAllObjects(object) {
+    return object.id == id;
+  }
+  return favouritesArray.find(searchThroughAllObjects);
+}
 
 app.listen(port, () => console.log(`App is running on port ${port}`));

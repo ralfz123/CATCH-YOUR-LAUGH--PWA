@@ -146,17 +146,20 @@ Learned:
 <summary>Expand</summary>
 
 #### App:
-- [x] UI is like the non-render-server-side app (WAFS)
+- [ ] UI is like the non-render-server-side app (WAFS)
 - [ ] static favicon rendered
+
 
 #### Code:
 - [x] Render data home
 - [ ] Not fetch when coming back at home
-- [ ] Pass data via views 
-- [ ] Server side fetch with npm package (request?)
+- [x] Pass data via views 
+- [x] Server side fetch with npm package 
 - [ ] responsive css added
 - [ ] Rollup
     - [ ] minify
+- [x] Page renders data
+- [ ] Add fav and fav list renders fav items
 #### Readme:
 
 </details>

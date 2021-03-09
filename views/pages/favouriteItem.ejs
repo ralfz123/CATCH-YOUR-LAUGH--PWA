@@ -10,12 +10,12 @@
     <main>
       <section id="fav-item">
         <a href="/favourites">Back</a>
-        <h1></h1>
+        <h1>Favourite # <%= favData.id %></h1>
 
-        <img id="fav-item-image" src="" alt="fav-cat-image" />
+        <img id="fav-item-image" src="<%= favData.cat %>" alt="fav-cat-image" />
         <div>
-          <p id="fav-item-joke"></p>
-          <p id="fav-item-punchline"></p>
+          <p id="fav-item-joke"><%= favData.setup %></p>
+          <p id="fav-item-punchline"><%= favData.punchline %></p>
         </div>
       </section>
     </main>
