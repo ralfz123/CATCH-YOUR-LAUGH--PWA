@@ -4,10 +4,14 @@ const express = require('express');
 const app = express();
 const port = 5000;
 const path = require('path');
+const bodyParser = require('body-parser');
+
 const getData = require('./modules/fetch.js');
 const urlCats = 'http://api.thecatapi.com/v1/images/search';
 const urlJokes = 'http://official-joke-api.appspot.com/jokes/random';
 const { filterCatData, filterJokeData } = require('./modules/filter.js');
+const { likeItem, checkDuplicateFav } = require('./modules/like.js');
+let favouritesArray = [];
 
 // **** MIDDLEWARE SET-UP **** //
 
@@ -17,6 +21,13 @@ app.use('/styles', express.static(__dirname + 'static/styles'));
 app.use('/scripts', express.static(__dirname + 'static/scripts'));
 app.use('/icons', express.static(__dirname + 'static/icons'));
 
+// app.use(express.urlencoded({ extended: true }));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
+
 // Setting views (EJS)
 app.set('views', './views');
 app.set('view engine', 'ejs');
@@ -24,25 +35,60 @@ app.set('view engine', 'ejs');
 // **** ROUTING **** //
 
 app.get('/', async (req, res) => {
-  // loader feedback here
-
   // Get data
   const dataCat = await getData(urlCats);
   const dataJokes = await getData(urlJokes);
+
+  // Filter data
   const filteredDataCat = filterCatData(dataCat);
   const filteredDataJokes = filterJokeData(dataJokes);
-  console.log('filtered cat', filteredDataCat);
-  console.log('filtered joke', filteredDataJokes);
 
+  // Render data
   res.render('index.ejs', { filteredDataCat, filteredDataJokes });
+  // set inputs to :disabled
 });
 
+app.post('/', function (req, res) {
+  const favData = {
+    // id: countFavItem(),
+    // cat: req.body.Image.src,
+    id: req.body.id,
+    setup: req.body.joke,
+    punchline: req.body.punchline, // rewrite without req.body
+  };
+
+  favouritesArray.push(favData);
+  checkDuplicateFavItems();
+  console.log(favouritesArray);
+});
+
+
+// NOT WORKING - Making an id, so it can be showed at the detail page
+function countFavItem() {
+  let count = 0;
+  for (var i = count; i <= count; i++) {
+    count += 1;
+  }
+  console.log(count);
+}
+
+// Checks if the liked combo is not a duplicate, then it won't be saved in the favourites list
+function checkDuplicateFavItems() {
+  const newArray = favouritesArray.reduce((newArray, currentValue) => {
+    if (!newArray.some((element) => element.id === currentValue.id))
+      newArray.push(currentValue);
+    return newArray;
+  }, []);
+  favouritesArray = newArray;
+}
+
 app.get('/favourites', function (req, res) {
-  res.render('pages/favourites'); // with favouritesArray data
+  res.render('pages/favourites', { favouritesArray });
 });
 
 app.get('/favourites/:id', function (req, res) {
   res.render('pages/favouriteItem');
+  // req.params.id - joke id
 });
 
 app.listen(port, () => console.log(`App is running on port ${port}`));

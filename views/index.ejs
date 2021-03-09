@@ -10,25 +10,37 @@
     <main>
       <section id="combo-generator">
         <div class="loader"></div>
+        <form action="" method="POST">
+          <article id="cat-images">
+            <!-- <img
+              id="image-cat"
+              src="<%= filteredDataCat.url %>"
+              alt="Image of a cat"
+            /> -->
 
+            <input type="image" name="cat" width="200px" src="<%= filteredDataCat.url %>" id="image-cat" >
+          </article>
 
-        <article id="cat-images">
-          <img id="image-cat" src="<%= filteredDataCat.url %>" alt="Image of a cat" />
-        </article>
+          <article id="jokes" style="height: 12em;"> 
+            <!-- <h3 id="joke"><%= filteredDataJokes.setup %></h3> -->
+            <!-- <h3 id="punchline"><%= filteredDataJokes.punchline %></h3> -->
 
+            <input type="text" name="joke" value="<%= filteredDataJokes.setup %>" style="width: 300px; height: 4em;" >
+            <input type="text" name="punchline" value="<%= filteredDataJokes.punchline %>" style="width: 300px; height: 4em;" >
+            <input type="text" name="id" value="<%= filteredDataJokes.id %>" style="width: 300px; height: 4em;" >
+            
+          </article>
 
-        <article id="jokes">
-          <h3 id="joke"><%= filteredDataJokes.setup %></h3>
-          <h3 id="punchline"><%= filteredDataJokes.punchline %></h3>
-        </article>
+          <button id="comboBtn" type="submit">Another combo!</button>
 
-        <button id="comboBtn">Another combo!</button>
+          <article id="like-area">
+            <h2>Like this combo!</h2>
 
-        <article id="like-area">
-          <h2>Like this combo!</h2>
-          <button id="likeBtn">❤️</button>
-          <a href="favourites">My Favourites</a>
-        </article>
+            <button id="likeBtn" type="submit">❤️</button>
+
+            <a href="favourites">My Favourites</a>
+          </article>
+        </form>
       </section>
     </main>
 

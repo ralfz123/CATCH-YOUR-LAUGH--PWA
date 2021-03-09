@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-let loader = require('../static/scripts/utils/loader.js');
+// let loader = require('../static/scripts/utils/loader.js');
 
 async function fetchData(url) {
   //   loader('show'); // Feedback to user while fetching data

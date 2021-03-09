@@ -26,10 +26,10 @@ function clickLikeBtn(catData, jokeData) {
  */
 
 function likeItem(catData, jokeData) {
-  let object = { catData: catData[0], jokeData: jokeData };
-  favouritesArray.push(object);
-  checkDuplicateFav();
-  renderFavItem(favouritesArray);
+  // let object = { catData: catData[0], jokeData: jokeData };
+  // favouritesArray.push(object);
+  // checkDuplicateFav();
+  // renderFavItem(favouritesArray);
   feedbackLike(); // UX Feedback from the 'like'
 }
 
