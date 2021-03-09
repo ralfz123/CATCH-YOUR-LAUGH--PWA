@@ -53,12 +53,12 @@ app.post('/', function (req, res) {
     cat: req.body.cat,
     id: req.body.id,
     setup: req.body.joke,
-    punchline: req.body.punchline, // rewrite without req.body
+    punchline: req.body.punchline,
   };
 
   favouritesArray.push(favData);
-  checkDuplicateFavItems();
-  console.log(favouritesArray);
+  checkDuplicateFav(favouritesArray);
+  console.log('favArray:', favouritesArray);
 });
 
 // NOT WORKING - Making an id, so it can be showed at the detail page
@@ -85,12 +85,18 @@ app.get('/favourites', function (req, res) {
 });
 
 app.get('/favourites/:id', function (req, res) {
-    // Search id in array
+  // Search id in array
   const favData = findObject(req.params.id);
+  if (favData) {
+    // Show correct id object from array
+    res.render('pages/favouriteItem', { favData });
+  } else {
+    res.redirect('/error');
+  }
+});
 
-  // show id object
-  console.log('object found:', favData);
-  res.render('pages/favouriteItem', { favData });
+app.get('/error', function (req, res) {
+  res.render('404.ejs');
 });
 
 function findObject(id) {

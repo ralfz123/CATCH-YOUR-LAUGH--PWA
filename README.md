@@ -146,9 +146,9 @@ Learned:
 <summary>Expand</summary>
 
 #### App:
-- [ ] UI is like the non-render-server-side app (WAFS)
+- [x] UI is like the non-render-server-side app (WAFS)
 - [ ] static favicon rendered
-
+- [x] Added error state
 
 #### Code:
 - [x] Render data home
@@ -156,10 +156,13 @@ Learned:
 - [x] Pass data via views 
 - [x] Server side fetch with npm package 
 - [ ] responsive css added
-- [ ] Rollup
+- [ ] Rollup (toolip / static site generator)
     - [ ] minify
 - [x] Page renders data
-- [ ] Add fav and fav list renders fav items
+- [x] Add fav and fav list renders fav items
+- [x] Detailpage renders data
+- [x] Core feature works :white_check_mark:
+- [ ] Put favouritesArray in a db like MongoDB (with session)
 #### Readme:
 
 </details>

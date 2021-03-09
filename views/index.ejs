@@ -12,37 +12,23 @@
         <div class="loader"></div>
         <form action="" method="POST">
           <article id="cat-images">
-            <!-- <img
-              id="image-cat"
-              src="<%= filteredDataCat.url %>"
-              alt="Image of a cat"
-            /> -->
-
-            <input type="text" name="cat" width="200px" value="<%= filteredDataCat.url %>" id="image-cat" style="display: none;">
+            <input type="text" name="cat" width="200px" value="<%= filteredDataCat.url %>" id="image-cat">
             <img src="<%= filteredDataCat.url %>" alt="">
           </article>
 
           <article id="jokes" style="height: 12em;"> 
-            <!-- <h3 id="joke"><%= filteredDataJokes.setup %></h3> -->
-            <!-- <h3 id="punchline"><%= filteredDataJokes.punchline %></h3> -->
-
-            <input type="text" name="joke" value="<%= filteredDataJokes.setup %>" style="display: none;" >
-            <input type="text" name="punchline" value="<%= filteredDataJokes.punchline %>" style="display: none;" >
-            <input type="text" name="id" value="<%= filteredDataJokes.id %>" style="display: none;" >
-
-            <label for="joke" style="display: block; background: #dcdedc;margin: 1em 0em;"><%= filteredDataJokes.setup %></label>
-            <label for="punchline" style="display: block; background: #dcdedc;margin: 1em 0em;"><%= filteredDataJokes.punchline %></label>
-            <label for="id" style="display: block; background: #dcdedc;margin: 1em 0em;"><%= filteredDataJokes.id %></label>
-            
+            <input type="text" name="joke" value="<%= filteredDataJokes.setup %>" >
+            <input type="text" name="punchline" value="<%= filteredDataJokes.punchline %>" >
+            <input type="text" name="id" value="<%= filteredDataJokes.id %>" >
+            <label id="joke" for="joke"><%= filteredDataJokes.setup %></label>
+            <label id="punchline" for="punchline"><%= filteredDataJokes.punchline %></label>
           </article>
 
           <button id="comboBtn" type="submit">Another combo!</button>
 
           <article id="like-area">
             <h2>Like this combo!</h2>
-
             <button id="likeBtn" type="submit">❤️</button>
-
             <a href="favourites">My Favourites</a>
           </article>
         </form>

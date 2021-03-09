@@ -15,25 +15,28 @@
         <button class="deleteAllBtn">Delete all</button>
 
         <ol>
-          <p>No favourite combo's yet 🙁</p>
-
-          <% favouritesArray.forEach(item => { %>
+          <% if(favouritesArray.length > 0){ %>
+            
+            <% favouritesArray.forEach(item => { %>
           <li>
             <img src="<%= item.cat %>" alt="" />
             <div>
               <p><%= item.setup %></p>
               <p><%= item.punchline %></p>
             </div>
-            <div>
-              <!-- <button class="checkBtn"></button> -->
-              <a href="/favourites/<%- item.id %>" style="display: block;">Go</a>
 
-              <form action="" method="POST">
+            <div>
+              <a href="/favourites/<%- item.id %>" class="checkBtn"></a>
+              <form action="" method="GET">
                 <button class="deleteBtn"></button>
               </form>
             </div>
           </li>
-          <% }) %>
+          <% }) %> 
+          
+          <% }else{ %>
+          <p>No favourite combo's yet 🙁</p>
+          <% }%>
         </ol>
       </section>
     </main>
