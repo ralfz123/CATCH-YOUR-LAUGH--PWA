@@ -10,7 +10,8 @@ const comboBtn = document.getElementById('comboBtn');
 if (comboBtn) {
   comboBtn.addEventListener('click', async function () {
     // Fetches data again
-    const receivedData = await getData();
-    renderData(receivedData.filteredDataCat, receivedData.filteredDataJoke);
+    console.log('Another combo button clicked')
+    // const receivedData = await getData();
+    // renderData(receivedData.filteredDataCat, receivedData.filteredDataJoke);
   });
 }

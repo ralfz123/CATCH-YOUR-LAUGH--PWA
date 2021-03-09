@@ -138,6 +138,8 @@ This app is built, using:
 
 # Commands building
 ## Challenges / Inventions:
+Learned:  
+- Module.exports in Node.js
 
 ## To-Do's :pencil:
 <details>
@@ -153,6 +155,8 @@ This app is built, using:
 - [ ] Pass data via views 
 - [ ] Server side fetch with npm package (request?)
 - [ ] responsive css added
+- [ ] Rollup
+    - [ ] minify
 #### Readme:
 
 </details>
@@ -190,6 +194,8 @@ Credits to [Joost Faber](https://github.com/joostf) && [Koop](https://github.com
 - Node.js (n.d.). A Runtime engine server for Chrome V8 - Node.js. Retrieved 8 March 2021 from https://nodejs.org
 
 - Express (n.d.). Framework for Node.js - Express. Retrieved 8 March 2021 from https://expressjs.com/
+
+- Sitepoint (n.d.) Understanding Modules - Sitepoint. Retrieved 9 March 2021 from https://www.sitepoint.com/understanding-module-exports-exports-node-js/
 
 ## :cop: License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  

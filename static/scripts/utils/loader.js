@@ -4,7 +4,7 @@
  * @param {string} state - The state of the loader
  */
 
-function loader(state) {
+exports.loader = function loader(state) {
   const loader = document.querySelector('.loader');
   if (loader) {
     loader.classList = 'loader';
@@ -15,4 +15,4 @@ function loader(state) {
     }
   }
 }
-export { loader };
+// export { loader };

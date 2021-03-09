@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%- include ('../partials/head') %>
+    <%- include ('./partials/head') %>
     <title>Home | CATCH YOUR LAUGH</title>
   </head>
   <body>
-    <%- include ('../partials/header') %>
+    <%- include ('./partials/header') %>
 
     <main>
       <section id="combo-generator">
         <div class="loader"></div>
 
-        <% dataCat.forEach(item => { %>
+
         <article id="cat-images">
-          <img id="image-cat" src="<%= item.url %>" alt="Image of a cat" />
+          <img id="image-cat" src="<%= filteredDataCat.url %>" alt="Image of a cat" />
         </article>
-        <% }) %>
+
 
         <article id="jokes">
-          <h3 id="joke"><%= dataJokes.setup %></h3>
-          <h3 id="punchline"><%= dataJokes.punchline %></h3>
+          <h3 id="joke"><%= filteredDataJokes.setup %></h3>
+          <h3 id="punchline"><%= filteredDataJokes.punchline %></h3>
         </article>
 
         <button id="comboBtn">Another combo!</button>
@@ -32,6 +32,6 @@
       </section>
     </main>
 
-    <%- include ('../partials/footer') %>
+    <%- include ('./partials/footer') %>
   </body>
 </html>

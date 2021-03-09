@@ -1,13 +1,13 @@
 // **** IMPORT PACKAGES  **** //
 
 const express = require('express');
-// const request = require('request');
-const fetch = require('node-fetch');
 const app = express();
 const port = 5000;
 const path = require('path');
-const endpointOne = 'http://api.thecatapi.com/v1/images/search';
-const endpointTwo = 'http://official-joke-api.appspot.com/jokes/random';
+const getData = require('./modules/fetch.js');
+const urlCats = 'http://api.thecatapi.com/v1/images/search';
+const urlJokes = 'http://official-joke-api.appspot.com/jokes/random';
+const { filterCatData, filterJokeData } = require('./modules/filter.js');
 
 // **** MIDDLEWARE SET-UP **** //
 
@@ -21,25 +21,20 @@ app.use('/icons', express.static(__dirname + 'static/icons'));
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
-// **** ROUTING **** // smart solution: https://stackoverflow.com/a/42331138
-
-// app.get('/', function (req, res) {
-//   request(endpointOne, function (error, response, body) {
-//     let catData = JSON.parse(body);
-//     res.render('pages/index.ejs', { catData: catData });
-//   });
-//   // request(endpointTwo, function (error, response, body){
-//   //   let jokeData = JSON.parse(body)
-//   //   res.render('pages/index', {jokeData: jokeData});
-//   //   console.log(jokeData)
-//   // })
-// });
+// **** ROUTING **** //
 
 app.get('/', async (req, res) => {
-  // loader feedback
-  const dataCat = await fetchData(endpointOne);
-  const dataJokes = await fetchData(endpointTwo);
-  res.render('pages/index.ejs', { dataCat, dataJokes });
+  // loader feedback here
+
+  // Get data
+  const dataCat = await getData(urlCats);
+  const dataJokes = await getData(urlJokes);
+  const filteredDataCat = filterCatData(dataCat);
+  const filteredDataJokes = filterJokeData(dataJokes);
+  console.log('filtered cat', filteredDataCat);
+  console.log('filtered joke', filteredDataJokes);
+
+  res.render('index.ejs', { filteredDataCat, filteredDataJokes });
 });
 
 app.get('/favourites', function (req, res) {
@@ -49,11 +44,5 @@ app.get('/favourites', function (req, res) {
 app.get('/favourites/:id', function (req, res) {
   res.render('pages/favouriteItem');
 });
-
-async function fetchData(url) {
-  const dataResponse = await fetch(url);
-  const jsonData = await dataResponse.json();
-  return jsonData;
-}
 
 app.listen(port, () => console.log(`App is running on port ${port}`));
