@@ -150,6 +150,7 @@ Learned:
 - [ ] static favicon rendered
 - [x] Added error state
 - [ ] Only fetch when hit another combo or first visit site. Not when clicking from `/favourites` to `/`
+- [ ] Feedback loader while fetching (combining client to serverside rendering)
 
 #### Code:
 - [x] Render data home

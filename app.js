@@ -11,6 +11,8 @@ const urlCats = 'http://api.thecatapi.com/v1/images/search';
 const urlJokes = 'http://official-joke-api.appspot.com/jokes/random';
 const { filterCatData, filterJokeData } = require('./modules/filter.js');
 const { likeItem, checkDuplicateFav } = require('./modules/like.js');
+// const { clickLikeBtn } = require('./static/scripts/modules/like');
+
 let favouritesArray = [];
 
 // **** MIDDLEWARE SET-UP **** //
@@ -42,6 +44,7 @@ app.get('/', async (req, res) => {
   // Filter data
   const filteredDataCat = filterCatData(dataCat);
   const filteredDataJokes = filterJokeData(dataJokes);
+  // clickLikeBtn();
 
   // Render data
   res.render('index.ejs', { filteredDataCat, filteredDataJokes });
