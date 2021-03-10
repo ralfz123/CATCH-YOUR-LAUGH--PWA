@@ -4,6 +4,8 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -18,9 +20,7 @@ html {
 /* ------------------------------------------- */
 body {
   margin: 0 auto;
-  margin: 20px;
-  padding: 0;
-  /* overflow-y: hidden; */
+  overflow-y: hidden;
   overflow-x: hidden;
 }
 
@@ -31,6 +31,7 @@ body {
 header {
   margin: 0 auto;
   text-align: center;
+  margin: 1em 0;
 }
 
 header h1 {
@@ -470,17 +471,17 @@ main section#combo-generator form input {
 
 #fav-item div p:first-child {
   padding: 10px 58px;
-  background: #eaeaea;
-
-  font-weight: normal;
+  margin: 1em 0;
   line-height: 1.5em;
+  font-weight: normal;
+  background: #eaeaea;
 }
 
 #fav-item div p:nth-child(2) {
   padding: 10px 58px;
-  background: #dadada;
   font-style: italic;
   font-weight: bold;
+  background: #dadada;
 }
 
 /* ------------------------------------------- */

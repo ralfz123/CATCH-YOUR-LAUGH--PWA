@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const { clickLikeBtn } = require('../static/scripts/modules/like');
 // let loader = require('../static/scripts/utils/loader.js');
 
 async function fetchData(url) {
@@ -20,6 +21,7 @@ module.exports = async function getData(url) {
   //   }
 
   const data = await fetchData(url);
+  // clickLikeBtn()
 
   //   likeBtn.removeAttribute('disabled', true); // Data is fetched, so now the like button is enabled
   //   comboBtn.removeAttribute('disabled', true); // Data is fetched, so now the combo button is enabled

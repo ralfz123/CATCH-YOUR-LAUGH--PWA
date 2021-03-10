@@ -57,7 +57,8 @@ app.post('/', function (req, res) {
   };
 
   favouritesArray.push(favData);
-  checkDuplicateFav(favouritesArray);
+  // checkDuplicateFav(favouritesArray); // Has to be activated
+  checkDuplicateFavItems();
   console.log('favArray:', favouritesArray);
 });
 
@@ -99,11 +100,12 @@ app.get('/error', function (req, res) {
   res.render('404.ejs');
 });
 
+// Finds the right object that is equal to the given id parameter
 function findObject(id) {
-  function searchThroughAllObjects(object) {
+  const correctObject = favouritesArray.find((object) => {
     return object.id == id;
-  }
-  return favouritesArray.find(searchThroughAllObjects);
+  });
+  return correctObject;
 }
 
 app.listen(port, () => console.log(`App is running on port ${port}`));

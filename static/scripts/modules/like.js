@@ -11,11 +11,12 @@ let favouritesArray = []; // Empty array for keeping up the favourites data
  *
  */
 
-function clickLikeBtn(catData, jokeData) {
+clickLikeBtn();
+function clickLikeBtn() {
   const likeBtn = document.getElementById('likeBtn');
-  likeBtn.onclick = () => likeItem(catData, jokeData);
+  likeBtn.onclick = () => console.log('clicked');
+  // preventDefault();
 }
-
 
 /**
  * Makes a new item (data object) in the favourites-list

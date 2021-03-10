@@ -149,6 +149,7 @@ Learned:
 - [x] UI is like the non-render-server-side app (WAFS)
 - [ ] static favicon rendered
 - [x] Added error state
+- [ ] Only fetch when hit another combo or first visit site. Not when clicking from `/favourites` to `/`
 
 #### Code:
 - [x] Render data home
