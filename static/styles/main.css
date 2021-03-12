@@ -417,11 +417,11 @@ main section#combo-generator form input {
 }
 
 #favourites ol li .deleteBtn {
-  background-image: url('../icons/trash.svg');
+  background-image: url('/icons/trash.svg');
 }
 
 #favourites ol li a.checkBtn {
-  background-image: url('../icons/info.svg');
+  background-image: url('/icons/info.svg');
 }
 
 #favourites ol li .deleteBtn:hover {

@@ -12,11 +12,11 @@
         <div class="loader"></div>
         <form action="" method="POST">
           <article id="cat-images">
-            <input type="text" name="cat" width="200px" value="<%= filteredDataCat.url %>" id="image-cat">
+            <input type="text" name="cat" value="<%= filteredDataCat.url %>" id="image-cat">
             <img src="<%= filteredDataCat.url %>" alt="">
           </article>
 
-          <article id="jokes" style="height: 12em;"> 
+          <article id="jokes" > 
             <input type="text" name="joke" value="<%= filteredDataJokes.setup %>" >
             <input type="text" name="punchline" value="<%= filteredDataJokes.punchline %>" >
             <input type="text" name="id" value="<%= filteredDataJokes.id %>" >

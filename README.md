@@ -44,7 +44,7 @@ Doel: Optimize the Critical Rendering Path
 # Course info for me [end]
 ***
 
-[Link to live version :rocket:](https://ralfz123.github.io/progressive-web-apps-2021)
+[NOT WORKING YET - Link to live version :rocket:](https://catch-your-laugh.herokuapp.com/)
 ### Table of Contents
 <table style="margin-left: auto; margin-right: auto;">
     <tr>
@@ -63,68 +63,24 @@ In this course I will convert the client side web application previously made We
 
 - atomic design (wk1)
 
-### Plan van Aanpak
+### Plan van Action
 1. Copy the WAFS app in this repo :white_check_mark:
 2. Delete the unnecessary features :white_check_mark:
 3. Install npm, Node.js and Express :white_check_mark:
-4. Refactor the code to a server side version (with Nodejs & Express) 
-5. Check if the application works
+4. Refactor the code to a server side version (with Nodejs & Express) :white_check_mark:
+5. Check if the application works :white_check_mark:
 
 ## :heart_eyes: Concept
 This application is a _rebuild_ from the [**CAT**CH YOUR LAUGH-application](https://github.com/ralfz123/CATCH-YOUR-LAUGH). Here I focus on the client- and serverside rendering and am I able to create a **P**rogressive **W**eb **A**pp.
-
-**CAT**CH YOUR LAUGH is an application where you can amuse pictures of cats in combination with jokes :cat: :laughing: . You can use this app when the atmosphere is no longer good, or there is no discussion material for a while, or you just want to laugh hard. Then this is the solution! This combination will lead to endless laughter from the user! 
-
-You may *like* the combination of the cat and the joke. It will be saved on the 'My Favourites' page and there you will see all your favourite combinations. You can also click on one of your favourites and you will be taken to the detail page where you will see your favourite in large format.
-
-### [Live version here :red_circle:](https://ralfz123.github.io/progressive-web-apps-2021)
-
 
 #### Features
 - By clicking on the 'ANOTHER COMBO' button you can see a different combination of a cat image and a joke
 - Like your favourite combination of a cat image and a joke
 - Create a favourites list with your favourite combinations of a cat image and a joke
 
-## :1234: Data  
-### APIs are:
-1. Cat images - https://thecatapi.com/
-2. Jokes - https://github.com/15Dkatz/official_joke_api
+To get more information about the app, for example it's APIs, check it [here](https://github.com/ralfz123/CATCH-YOUR-LAUGH/blob/master/README.md#heart_eyes-concept).
 
-The data variables I used, are:
-#### 1. Cat images
-- `id`
-- `url`  
-
-#### 2. Jokes
-- `id`
-- `setup` 
-- `punchline`
-
-### Dataset structure
-#### 1. Cat images
-
-```js
-[
-    {
-    breeds: [ ],
-    id: "eg4",
-    url: "https://cdn2.thecatapi.com/images/eg4.jpg",
-    width: 300,
-    height: 225
-    }
-]
-```
-
-#### 2. Jokes
-```js
-{
-    id: 327,
-    type: "general",
-    setup: "Why did Sweden start painting barcodes on the sides of their battleships?",
-    punchline: "So they could Scandinavian."
-}
-```
-
+### [NOT WORKING YET - Live version here :red_circle:](https://catch-your-laugh.herokuapp.com/)
 
 ## :nerd_face: Technical summary
 This app is built, using:
@@ -132,11 +88,102 @@ This app is built, using:
 - [Node.js server](https://nodejs.org/)
 - [Express router](https://expressjs.com/)
 - [EJS Templating engine](https://ejs.co/)
+- [Rollup tooling](https://rollupjs.org/guide/en/#introduction)
+- [Heroku deployment](https://www.heroku.com/nodejs)
 
-## Tooling
-- rollup.js
+## :gear: Installation
+1. Clone the repository:  
+```
+git clone https://github.com/ralfz123/progressive-web-apps-2021.git
+```
 
-# Commands building
+2. Install dependencies   
+```
+npm install
+```
+
+3. To run the app   
+```
+npm start
+```
+
+4. To run the app in developer mode (with nodemon)
+```
+npm startdev
+```
+5. Go to [localhost](http://localhost:5000/) in the browser and voilà :sparkles:
+```
+http://localhost:5000/
+```
+
+## :gear: Build
+#### Server 
+For running the server i use the Express framework for Node.js. This is a web framework for Node.js which is good for setting up a server.
+
+1. Require Express
+```
+const express = require("express");
+```
+
+After that you init your app
+```
+const app = express();
+```
+
+Config your Express-app
+```js
+app.use(express.static('static')); // Declare your static folder
+
+// Declare folders in the static folder for easy use
+app.use('/styles', express.static(__dirname + 'static/styles'));
+app.use('/scripts', express.static(__dirname + 'static/scripts'));
+app.use('/icons', express.static(__dirname + 'static/icons'));
+
+// Run the server on a port
+app.listen(5000, () => console.log(`App is running on port 5000`));
+```
+
+#### Templating engine
+For the templating engine I use [EJS]. I really like EJS, because it is easy to implement and work with.
+
+An example of how I render a page and pass data with rendering
+
+```js
+app.get('/', async (req, res) => {
+  // Get data
+  const dataCat = await getData(urlCats);
+  const dataJokes = await getData(urlJokes);
+
+  // Filter data
+  const filteredDataCat = filterCatData(dataCat);
+  const filteredDataJokes = filterJokeData(dataJokes);
+
+  // Render page with data
+  res.render('index.ejs', { filteredDataCat, filteredDataJokes });
+});
+```
+
+In the `.ejs` file
+```html
+<img src="<%= filteredDataCat.url %>" alt="">
+<label id="joke" for="joke"><%= filteredDataJokes.setup %></label>
+<label id="punchline" for="punchline"><%= filteredDataJokes.punchline %></label>
+```
+
+### Building
+For the building I used Rollup.js. It was for me the first time I used a bundler/tooling. At the moment I struggle with building/minifying my code.
+
+### Deploying
+To deploy my application I used Heroku for the first time. It's easy to use, but my deployment isn't finished yet. Something went wrong with the `favicon path` 😕 . 
+
+```
+1. heroku create // Create heroku CLI
+2. git add . && git commit -m 'Update app' // Add your last changes and commit
+3. git push heroku master // Push to heroku master branch
+4. catch-your-laugh.herokuapp.com // Build is done and deployed
+```
+
+
 ## Challenges / Inventions:
 Learned:  
 - Module.exports in Node.js
@@ -167,30 +214,8 @@ Learned:
 - [ ] Put favouritesArray in a db like MongoDB (with session)
 #### Readme:
 
+
 </details>
-
-
-## :gear: Installation
-1. Clone the repository:  
-```
-git clone https://github.com/ralfz123/progressive-web-apps-2021.git
-```
-
-2. Install dependencies   
-```
-npm install
-```
-
-3. To run the app   
-```
-npm start
-```
-
-4. Go to [localhost](http://localhost:5000/) in the browser and voilà :sparkles:
-```
-http://localhost:5000/
-```
-
 ## :file_folder: Sources
 Credits to [Joost Faber](https://github.com/joostf) && [Koop](https://github.com/KoopReynders) && [Declan](https://github.com/decrek) for giving interesting lectures about PWA's and JavaScript and how to deal with it.
 
