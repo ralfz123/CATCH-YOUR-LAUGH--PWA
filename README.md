@@ -104,12 +104,12 @@ npm install
 
 3. To run the app   
 ```
-npm start
+npm run start
 ```
 
 4. To run the app in developer mode (with nodemon)
 ```
-npm startdev
+npm run dev
 ```
 5. Go to [localhost](http://localhost:5000/) in the browser and voilà :sparkles:
 ```
@@ -213,6 +213,7 @@ Learned:
 - [x] Core feature works :white_check_mark:
 - [ ] Put favouritesArray in a db like MongoDB (with session)
 #### Readme:
+- [ ] Build command in Install proces
 
 
 </details>
