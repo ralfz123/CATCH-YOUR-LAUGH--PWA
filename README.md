@@ -144,7 +144,7 @@ app.listen(5000, () => console.log(`App is running on port 5000`));
 ```
 
 #### Templating engine
-For the templating engine I use [EJS]. I really like EJS, because it is easy to implement and work with.
+For the templating engine I use EJS. I really like EJS, because it is easy to implement and work with.
 
 An example of how I render a page and pass data with rendering
 
@@ -216,6 +216,7 @@ Learned:
 
 
 </details>
+
 ## :file_folder: Sources
 Credits to [Joost Faber](https://github.com/joostf) && [Koop](https://github.com/KoopReynders) && [Declan](https://github.com/decrek) for giving interesting lectures about PWA's and JavaScript and how to deal with it.
 
