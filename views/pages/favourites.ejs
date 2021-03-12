@@ -17,16 +17,16 @@
         <ol>
           <% if(favouritesArray.length > 0){ %>
             
-            <% favouritesArray.forEach(item => { %>
+            <% favouritesArray.forEach(object => { %>
           <li>
-            <img src="<%= item.cat %>" alt="" />
+            <img src="<%= object.cat %>" alt="" />
             <div>
-              <p><%= item.setup %></p>
-              <p><%= item.punchline %></p>
+              <p><%= object.setup %></p>
+              <p><%= object.punchline %></p>
             </div>
 
             <div>
-              <a href="/favourites/<%- item.id %>" class="checkBtn"></a>
+              <a href="/favourites/<%- object.id %>" class="checkBtn"></a>
               <form action="" method="GET">
                 <button class="deleteBtn"></button>
               </form>

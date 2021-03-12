@@ -3,17 +3,13 @@
 const express = require('express');
 const app = express();
 const port = 5000;
-const path = require('path');
 const bodyParser = require('body-parser');
 
 const getData = require('./modules/fetch.js');
-const urlCats = 'http://api.thecatapi.com/v1/images/search';
-const urlJokes = 'http://official-joke-api.appspot.com/jokes/random';
-const { filterCatData, filterJokeData } = require('./modules/filter.js');
 const { likeItem, checkDuplicateFav } = require('./modules/like.js');
 // const { clickLikeBtn } = require('./static/scripts/modules/like');
 
-let favouritesArray = [];
+let favouritesArray = []; // Empty array that will filled with objects through the hit like button
 
 // **** MIDDLEWARE SET-UP **** //
 
@@ -37,17 +33,17 @@ app.set('view engine', 'ejs');
 // **** ROUTING **** //
 
 app.get('/', async (req, res) => {
-  // Get data
-  const dataCat = await getData(urlCats);
-  const dataJokes = await getData(urlJokes);
+  // Get data through fetch and put in a variable called dataAll
+  const dataAll = await getData();
 
-  // Filter data
-  const filteredDataCat = filterCatData(dataCat);
-  const filteredDataJokes = filterJokeData(dataJokes);
+  // Declare data variables for better use in .ejs files
+  const catData = dataAll.filteredDataCat;
+  const jokeData = dataAll.filteredDataJokes;
+
   // clickLikeBtn();
 
   // Render data
-  res.render('index.ejs', { filteredDataCat, filteredDataJokes });
+  res.render('index.ejs', { catData, jokeData });
 });
 
 app.post('/', function (req, res) {
@@ -62,7 +58,6 @@ app.post('/', function (req, res) {
   favouritesArray.push(favData);
   // checkDuplicateFav(favouritesArray); // Has to be activated
   checkDuplicateFavItems();
-  console.log('favArray:', favouritesArray);
 });
 
 // NOT WORKING - Making an id, so it can be showed at the detail page
@@ -71,7 +66,6 @@ function countFavItem() {
   for (var i = count; i <= count; i++) {
     count += 1;
   }
-  console.log(count);
 }
 
 // Checks if the liked combo is not a duplicate, then it won't be saved in the favourites list

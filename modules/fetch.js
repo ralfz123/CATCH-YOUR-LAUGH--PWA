@@ -1,4 +1,7 @@
 const fetch = require('node-fetch');
+const urlCats = 'http://api.thecatapi.com/v1/images/search';
+const urlJokes = 'http://official-joke-api.appspot.com/jokes/random';
+const { filterCatData, filterJokeData } = require('./filter.js')
 // let loader = require('../static/scripts/utils/loader.js');
 
 async function fetchData(url) {
@@ -19,12 +22,17 @@ async function getData(url) {
   //     comboBtn.setAttribute('disabled', true); // Set button to disabled, so that you're not able to see other unfetched data
   //   }
 
-  const data = await fetchData(url);
+  const dataCats = await fetchData(urlCats);
+  const dataJokes = await fetchData(urlJokes)
+
+  // Filter data
+  const filteredDataCat = filterCatData(dataCats);
+  const filteredDataJokes = filterJokeData(dataJokes);
 
   //   likeBtn.removeAttribute('disabled', true); // Data is fetched, so now the like button is enabled
   //   comboBtn.removeAttribute('disabled', true); // Data is fetched, so now the combo button is enabled
 
-  return { data };
+  return { filteredDataCat, filteredDataJokes };
 }
 
 module.exports = getData;

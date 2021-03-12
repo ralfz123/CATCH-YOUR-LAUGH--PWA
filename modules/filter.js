@@ -8,8 +8,8 @@
 
 function filterCatData(rawCatData) {
   return {
-    id: rawCatData.data[0].id,
-    url: rawCatData.data[0].url,
+    id: rawCatData[0].id,
+    url: rawCatData[0].url,
   };
 }
 
@@ -23,9 +23,9 @@ function filterCatData(rawCatData) {
 
 function filterJokeData(rawJokeData) {
   return {
-    id: rawJokeData.data.id,
-    setup: rawJokeData.data.setup,
-    punchline: rawJokeData.data.punchline,
+    id: rawJokeData.id,
+    setup: rawJokeData.setup,
+    punchline: rawJokeData.punchline,
   };
 }
 

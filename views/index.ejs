@@ -12,16 +12,16 @@
         <div class="loader"></div>
         <form action="" method="POST">
           <article id="cat-images">
-            <input type="text" name="cat" value="<%= filteredDataCat.url %>" id="image-cat">
-            <img src="<%= filteredDataCat.url %>" alt="">
+            <input type="text" name="cat" value="<%= catData.url %>" id="image-cat">
+            <img src="<%= catData.url %>" alt="">
           </article>
 
           <article id="jokes" > 
-            <input type="text" name="joke" value="<%= filteredDataJokes.setup %>" >
-            <input type="text" name="punchline" value="<%= filteredDataJokes.punchline %>" >
-            <input type="text" name="id" value="<%= filteredDataJokes.id %>" >
-            <label id="joke" for="joke"><%= filteredDataJokes.setup %></label>
-            <label id="punchline" for="punchline"><%= filteredDataJokes.punchline %></label>
+            <input type="text" name="joke" value="<%= jokeData.setup %>" >
+            <input type="text" name="punchline" value="<%= jokeData.punchline %>" >
+            <input type="text" name="id" value="<%= jokeData.id %>" >
+            <label id="joke" for="joke"><%= jokeData.setup %></label>
+            <label id="punchline" for="punchline"><%= jokeData.punchline %></label>
           </article>
 
           <button id="comboBtn" type="submit">Another combo!</button>
