@@ -11,11 +11,14 @@ let favouritesArray = []; // Empty array for keeping up the favourites data
  *
  */
 
-// clickLikeBtn();
+clickLikeBtn();
 function clickLikeBtn() {
   const likeBtn = document.getElementById('likeBtn');
-  likeBtn.onclick = () => console.log('clicked');
-  // preventDefault();
+  if (likeBtn) {
+    likeBtn.addEventListener('click', function () {
+      feedbackLike(); // UX Feedback from the 'like'
+    });
+  }
 }
 
 /**

@@ -196,11 +196,13 @@ Learned:
 
 #### App:
 - [x] UI is like the non-render-server-side app (WAFS)
-- [ ] static favicon rendered
+- [x] static favicon rendered
 - [x] Added error state
 - [ ] Only fetch when hit another combo or first visit site. Not when clicking from `/favourites` to `/`
 - [ ] Feedback loader while fetching (combining client to serverside rendering)
 - [ ] Serverworker ON and I can not add favourites :(
+- [ ] Count indexOf object in global array, so the number => id of the object can be shown at detail page
+- [x] Feedback like
 
 #### Code:
 - [x] Render data home

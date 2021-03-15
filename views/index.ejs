@@ -8,7 +8,7 @@
     <main>
       <section id="combo-generator">
         <div class="loader"></div>
-        <form action="/" method="POST">
+        <form method="POST">
           <article id="cat-images">
             <input type="text" name="cat" value="<%= catData.url %>" id="image-cat">
             <img src="<%= catData.url %>" alt="">
@@ -22,7 +22,7 @@
             <label id="punchline" for="punchline"><%= jokeData.punchline %></label>
           </article>
 
-          <button id="comboBtn" type="submit">Another combo!</button>
+          <button id="comboBtn" type="button">Another combo!</button>
 
           <article id="like-area">
             <h2>Like this combo!</h2>

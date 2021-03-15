@@ -1,33 +1,31 @@
+//                            //
 // **** IMPORT PACKAGES  **** //
-
+//                            //
 const express = require('express');
 const app = express();
 const port = 5000;
 const bodyParser = require('body-parser');
 
 const getData = require('./modules/fetch.js');
-const { checkDuplicateFav } = require('./modules/like.js');
+const { clickLikeBtn, checkDuplicateFav } = require('./modules/like.js');
 
 let favouritesArray = []; // Empty array that will filled with objects through the hit like button
 
+//                             //
 // **** MIDDLEWARE SET-UP **** //
-
+//                             //
 // Using static files from static directory
 app.use(express.static('static'));
 
-// app.use(express.urlencoded({ extended: true }));
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Setting views (EJS)
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
-// **** ROUTING **** //
-
+//                             //
+// ******** ROUTING ********** //
+//                             //
 app.get('/', async (req, res) => {
   // Get data through fetch and put in a variable called dataAll
   const dataAll = await getData();
@@ -49,7 +47,7 @@ app.get('/', async (req, res) => {
 //   // console.log(receivedData)
 //   // res.setHeader('Content-Type', 'application/json');
 //   // res.send({ receivedData });
-  
+
 // }
 
 app.post('/', function (req, res) {
@@ -65,6 +63,38 @@ app.post('/', function (req, res) {
   // checkDuplicateFav(favouritesArray); // Has to be activated
   checkDuplicateFavItems();
 });
+
+app.get('/favourites', function (req, res) {
+  res.render('pages/favourites', { favouritesArray });
+});
+
+// Checks which object is 'deleted', find in global array and remove (splice)
+app.post('/favourites', function (req, res) {});
+
+app.get('/favourites/:id', function (req, res) {
+  // Search id in array
+  const favData = findObject(req.params.id);
+  if (favData) {
+    // Show correct id object from array
+    res.render('pages/favouriteItem', { favData });
+  } else {
+    res.redirect('/error');
+  }
+});
+
+app.get('/error', function (req, res) {
+  res.render('404.ejs');
+});
+
+app.listen(port, () => console.log(`App is running on port ${port}`));
+
+// Finds the right object that is equal to the given id parameter
+function findObject(id) {
+  const correctObject = favouritesArray.find((object) => {
+    return object.id == id;
+  });
+  return correctObject;
+}
 
 // NOT WORKING - Making an id, so it can be showed at the detail page
 function countFavItem() {
@@ -93,32 +123,3 @@ function checkDuplicateFavItems() {
   //   });
   //   return correctObject;
 }
-
-app.get('/favourites', function (req, res) {
-  res.render('pages/favourites', { favouritesArray });
-});
-
-app.get('/favourites/:id', function (req, res) {
-  // Search id in array
-  const favData = findObject(req.params.id);
-  if (favData) {
-    // Show correct id object from array
-    res.render('pages/favouriteItem', { favData });
-  } else {
-    res.redirect('/error');
-  }
-});
-
-app.get('/error', function (req, res) {
-  res.render('404.ejs');
-});
-
-// Finds the right object that is equal to the given id parameter
-function findObject(id) {
-  const correctObject = favouritesArray.find((object) => {
-    return object.id == id;
-  });
-  return correctObject;
-}
-
-app.listen(port, () => console.log(`App is running on port ${port}`));

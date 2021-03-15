@@ -2,6 +2,7 @@ import { urlCats, urlJokes } from '../constants/api.js';
 import { loader } from './loader.js';
 import { filterCatData, filterJokeData } from './filter.js';
 import '../modules/anotherCombo.js';
+import '../modules/like.js'
 
 /**
  * Fetching data and parses to JSON
