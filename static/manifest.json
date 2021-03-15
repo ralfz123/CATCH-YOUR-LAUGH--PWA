@@ -1,9 +1,8 @@
 {
   "name": "CATCH YOUR LAUGH",
   "short_name": "CYL 😹",
-  "description": "CATCH YOUR LAUGH is an funny nice-to-have when you are at a boring party and you want to laugh.",
-  "theme_color": "#2c28bb",
-  "background_color": "#ffffff",
+  "theme_color": "#f7f7f7",
+  "background_color": "#2c28bb",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",

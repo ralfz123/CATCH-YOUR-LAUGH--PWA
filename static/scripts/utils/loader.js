@@ -4,6 +4,9 @@
  * @param {string} state - The state of the loader
  */
 
+// loader('show');
+loader('hide');
+
 function loader(state) {
   const loader = document.querySelector('.loader');
   if (loader) {
@@ -15,4 +18,4 @@ function loader(state) {
     }
   }
 }
-export { loader };
+// export { loader };

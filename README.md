@@ -44,7 +44,7 @@ Doel: Optimize the Critical Rendering Path
 # Course info for me [end]
 ***
 
-[NOT WORKING YET - Link to live version :rocket:](https://catch-your-laugh.herokuapp.com/)
+[Link to live version :rocket:](https://catch-your-laugh.herokuapp.com/)
 ### Table of Contents
 <table style="margin-left: auto; margin-right: auto;">
     <tr>
@@ -199,10 +199,12 @@ Learned:
 - [x] static favicon rendered
 - [x] Added error state
 - [ ] Only fetch when hit another combo or first visit site. Not when clicking from `/favourites` to `/`
-- [ ] Feedback loader while fetching (combining client to serverside rendering)
+Feedback user:
+    - [ ] Feedback loader while fetching (combining client to serverside rendering)
+    - [x] Feedback like
 - [ ] Serverworker ON and I can not add favourites :(
 - [ ] Count indexOf object in global array, so the number => id of the object can be shown at detail page
-- [x] Feedback like
+- [x] Deployed :rocket:
 
 #### Code:
 - [x] Render data home

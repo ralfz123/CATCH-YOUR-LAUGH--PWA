@@ -2,13 +2,13 @@ const fetch = require('node-fetch');
 const urlCats = 'http://api.thecatapi.com/v1/images/search';
 const urlJokes = 'http://official-joke-api.appspot.com/jokes/random';
 const { filterCatData, filterJokeData } = require('./filter.js')
-// let loader = require('../static/scripts/utils/loader.js');
+// const loader = require('../../static/scripts/utils/loader.js');
 
 async function fetchData(url) {
-  //   loader('show'); // Feedback to user while fetching data
+    // loader('show'); // Feedback to user while fetching data
   const dataResponse = await fetch(url);
   const jsonData = await dataResponse.json();
-  //   loader('hide'); // Feedback to user while fetching data
+    // loader('hide'); // Feedback to user while fetching data
   return jsonData;
 }
 

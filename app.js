@@ -3,11 +3,12 @@
 //                            //
 const express = require('express');
 const app = express();
-const port = 5000;
+const PORT = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
 
-const getData = require('./modules/fetch.js');
+const getData = require('./modules/utils/fetch.js');
 const { clickLikeBtn, checkDuplicateFav } = require('./modules/like.js');
+const findObject = require('./modules/utils/findObject.js');
 
 let favouritesArray = []; // Empty array that will filled with objects through the hit like button
 
@@ -73,7 +74,7 @@ app.post('/favourites', function (req, res) {});
 
 app.get('/favourites/:id', function (req, res) {
   // Search id in array
-  const favData = findObject(req.params.id);
+  const favData = findObject(req.params.id, favouritesArray);
   if (favData) {
     // Show correct id object from array
     res.render('pages/favouriteItem', { favData });
@@ -86,15 +87,7 @@ app.get('/error', function (req, res) {
   res.render('404.ejs');
 });
 
-app.listen(process.env.PORT, () => console.log(`App is running on port ${port}`));
-
-// Finds the right object that is equal to the given id parameter
-function findObject(id) {
-  const correctObject = favouritesArray.find((object) => {
-    return object.id == id;
-  });
-  return correctObject;
-}
+app.listen(PORT, () => console.log(`App is running on port ${PORT}`));
 
 // NOT WORKING - Making an id, so it can be showed at the detail page
 function countFavItem() {

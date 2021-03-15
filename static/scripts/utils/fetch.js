@@ -1,5 +1,5 @@
 import { urlCats, urlJokes } from '../constants/api.js';
-import { loader } from './loader.js';
+// import { loader } from './loader.js';
 import { filterCatData, filterJokeData } from './filter.js';
 import '../modules/anotherCombo.js';
 import '../modules/like.js'
@@ -13,10 +13,10 @@ import '../modules/like.js'
  */
 
 async function fetchData(url) {
-  loader('show'); // Feedback to user while fetching data
+  // loader('show'); // Feedback to user while fetching data
   const dataResponse = await fetch(url);
   const jsonData = await dataResponse.json();
-  loader('hide'); // Feedback to user while fetching data
+  // loader('hide'); // Feedback to user while fetching data
   return jsonData;
 }
 
