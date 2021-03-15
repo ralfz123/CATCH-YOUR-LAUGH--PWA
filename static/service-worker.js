@@ -1,11 +1,13 @@
 const staticCache = 'site-static';
 const assets = [
-  // '/',
-  '/scripts/main.js',
-  '/styles/main.css',
-  './favicon.svg',
-  'https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap',
-  'https://fonts.gstatic.com/s/quicksand/v22/6xKtdSZaM9iE8KbpRA_hJFQNYuDyP7bh.woff2',
+  // '/favourites',
+  // './favicon.svg',
+  // '/scripts/main.js',
+  // '/styles/main.css',
+  // 'https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap',
+  // 'https://fonts.gstatic.com/s/quicksand/v22/6xKtdSZaM9iE8KbpRA_hJFQNYuDyP7bh.woff2',
+  // '../static',
+  './offline.html',
 ];
 
 self.addEventListener('install', (event) => {
@@ -16,7 +18,8 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(staticCache).then((cache) => {
       console.log('caching assets');
-      cache.addAll(assets);
+      cache.addAll(assets)
+      .then(() => self.skipWaiting());
     })
   );
 
@@ -34,17 +37,32 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  console.log('fetch', event.request);
-  event.respondWith(
-    caches.match(event.request).then((cacheRes) => {
-      return cacheRes || fetch(event.request);
-    })
-  );
-
-  // Remove this code, because it has to be at the 'install' phase
+  // console.log('fetch', event.request);
   // event.respondWith(
-  //   fetch(event.request).catch((error) => {
-  //     return new Response('You are offline');
+  //   caches.match(event.request).then((cacheRes) => {
+  //     return cacheRes || fetch(event.request);
   //   })
   // );
+
+  // Source: https://deanhume.com/create-a-really-really-simple-offline-page-using-service-workers/
+
+  if (
+    event.request.mode === 'navigate' ||
+    (event.request.method === 'GET' &&
+      event.request.headers.get('accept').includes('text/html'))
+  ) {
+    event.respondWith(
+      fetch(event.request.url).catch((error) => {
+        // Return the offline page
+        return caches.match(assets);
+      })
+    );
+  } else {
+    // Respond with everything else if we can
+    event.respondWith(
+      caches.match(event.request).then(function (cacheRes) {
+        return cacheRes || fetch(event.request);
+      })
+    );
+  }
 });

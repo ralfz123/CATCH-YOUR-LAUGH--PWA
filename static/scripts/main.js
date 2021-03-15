@@ -13,6 +13,6 @@ import { renderData } from './modules/render.js';
   // renderData(receivedData.filteredDataCat, receivedData.filteredDataJoke);
 })();
 
-// if ('serviceWorker' in navigator) {
-//   navigator.serviceWorker.register('../service-worker.js');
-// }
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('../service-worker.js');
+}
