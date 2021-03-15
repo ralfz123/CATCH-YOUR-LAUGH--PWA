@@ -236,6 +236,8 @@ Credits to [Joost Faber](https://github.com/joostf) && [Koop](https://github.com
 
 - Sitepoint (n.d.) Understanding Modules - Sitepoint. Retrieved 9 March 2021 from https://www.sitepoint.com/understanding-module-exports-exports-node-js/
 
+- Youtube (n.d.) Registering a Service Worker - The Net Ninja. Retrieved 15 March 2021 from https://www.youtube.com/watch?v=6s697AJdlB8
+
 ## :cop: License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
 This project from [Ralf](https://github.com/ralfz123) has a [MIT © License](https://github.com/ralfz123/progressive-web-apps-2021/blob/main/LICENSE)

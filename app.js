@@ -43,7 +43,7 @@ app.get('/', async (req, res) => {
   res.render('index.ejs', { catData, jokeData });
 });
 
-app.post('/fetchData', getButtonData;
+app.post('/fetchData', getButtonData);
 
 function getButtonData(req, res) {
   console.log('Function is reached')

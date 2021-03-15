@@ -9,14 +9,14 @@ const comboBtn = document.getElementById('comboBtn');
 if (comboBtn) {
   comboBtn.addEventListener('click', async function () {
     console.log('Another combo button clicked');
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
+    // const options = {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    // };
 
-    const data = await getData('/fetchData', options);
-    console.log(data)
+    // const data = await getData('/fetchData', options);
+    // console.log(data)
   });
 }

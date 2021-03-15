@@ -94,13 +94,14 @@ main section {
   display: block;
 } */
 
+/* ------ HOME ------- */
+
 main section#combo-generator {
   margin: 0 auto;
   position: relative;
   justify-items: center;
 }
 
-/* ------ CATS ------- */
 main section#combo-generator form {
   display: grid;
   grid-template-areas:
@@ -117,10 +118,32 @@ main section#combo-generator form input {
   display: none;
 }
 
+/* ------ CATS ------- */
+
 #cat-images {
   grid-area: cats;
   text-align: center;
   height: 35vh;
+  animation: fadeInCat 1s 0s ease-in;
+}
+
+@keyframes fadeInCat {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(0.2) translateX(0px);
+  }
+  25%{
+    transform: translateX(-20px);
+  }
+  50% {
+    transform: scale(1.1) translateX(-5px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: scale(1) translateX(0px);
+  }
 }
 
 #cat-images img {
@@ -143,6 +166,26 @@ main section#combo-generator form input {
   font-family: var(--font-body);
   width: 100%;
   height: 100%;
+  animation: fadeInJoke 1s 0s ease-in;
+}
+
+@keyframes fadeInJoke {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(0.2) translateX(0px);
+  }
+  25%{
+    transform: translateX(20px);
+  }
+  50% {
+    transform: scale(1.1) translateX(5px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: scale(1) translateX(0px);
+  }
 }
 
 #jokes input {
