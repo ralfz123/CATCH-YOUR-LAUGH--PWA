@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
   <head>
     <%- include ('./partials/head') %>
     <title>Home | CLY 😹 </title>
@@ -10,7 +8,7 @@
     <main>
       <section id="combo-generator">
         <div class="loader"></div>
-        <form action="" method="POST">
+        <form action="/" method="POST">
           <article id="cat-images">
             <input type="text" name="cat" value="<%= catData.url %>" id="image-cat">
             <img src="<%= catData.url %>" alt="">
@@ -36,5 +34,3 @@
     </main>
 
     <%- include ('./partials/footer') %>
-  </body>
-</html>

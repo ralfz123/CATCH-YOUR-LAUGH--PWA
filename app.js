@@ -6,8 +6,7 @@ const port = 5000;
 const bodyParser = require('body-parser');
 
 const getData = require('./modules/fetch.js');
-const { likeItem, checkDuplicateFav } = require('./modules/like.js');
-// const { clickLikeBtn } = require('./static/scripts/modules/like');
+const { checkDuplicateFav } = require('./modules/like.js');
 
 let favouritesArray = []; // Empty array that will filled with objects through the hit like button
 
@@ -40,11 +39,21 @@ app.get('/', async (req, res) => {
   const catData = dataAll.filteredDataCat;
   const jokeData = dataAll.filteredDataJokes;
 
-  // clickLikeBtn();
-
   // Render data
   res.render('index.ejs', { catData, jokeData });
 });
+
+app.post('/fetchData', getButtonData;
+
+function getButtonData(req, res) {
+  console.log('Function is reached')
+  // res.send({receivedData})
+  // const receivedData = await getData();
+  // console.log(receivedData)
+  // res.setHeader('Content-Type', 'application/json');
+  // res.send({ receivedData });
+  
+}
 
 app.post('/', function (req, res) {
   const favData = {
@@ -76,6 +85,16 @@ function checkDuplicateFavItems() {
     return newArray;
   }, []);
   favouritesArray = newArray;
+
+  //   const correctObject = favouritesArray.find((object) => {
+  //     console.log(id)
+  //     if (object.id == id) {
+  //       console.log('the same')
+
+  //     }
+  //     // return object.id == id;
+  //   });
+  //   return correctObject;
 }
 
 app.get('/favourites', function (req, res) {

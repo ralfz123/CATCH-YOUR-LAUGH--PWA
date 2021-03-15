@@ -9,7 +9,10 @@ import { renderData } from './modules/render.js';
 (async function init() {
   // Get data through fetch and put in a variable called receivedData
   // const receivedData = await getData();
-
   // Render that data
   // renderData(receivedData.filteredDataCat, receivedData.filteredDataJoke);
 })();
+
+// if ('serviceWorker' in navigator) {
+//   navigator.serviceWorker.register('../service-worker.js');
+// }

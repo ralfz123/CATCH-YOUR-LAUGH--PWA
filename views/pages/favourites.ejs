@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
   <head>
     <%- include ('../partials/head') %>
     <title>Favourites | CLY 😹</title>
@@ -17,16 +15,16 @@
         <ol>
           <% if(favouritesArray.length > 0){ %>
             
-            <% favouritesArray.forEach(object => { %>
+            <% favouritesArray.forEach(({cat, setup, punchline, id}) => { %>
           <li>
-            <img src="<%= object.cat %>" alt="" />
+            <img src="<%= cat %>" alt="" />
             <div>
-              <p><%= object.setup %></p>
-              <p><%= object.punchline %></p>
+              <p><%= setup %></p>
+              <p><%= punchline %></p>
             </div>
 
             <div>
-              <a href="/favourites/<%- object.id %>" class="checkBtn"></a>
+              <a href="/favourites/<%- id %>" class="checkBtn"></a>
               <form action="" method="GET">
                 <button class="deleteBtn"></button>
               </form>
@@ -40,7 +38,5 @@
         </ol>
       </section>
     </main>
-
+    
     <%- include ('../partials/footer') %>
-  </body>
-</html>

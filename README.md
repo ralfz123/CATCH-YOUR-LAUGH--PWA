@@ -183,6 +183,8 @@ To deploy my application I used Heroku for the first time. It's easy to use, but
 4. catch-your-laugh.herokuapp.com // Build is done and deployed
 ```
 
+### Serviceworker
+first time I work with serviceworker
 
 ## Challenges / Inventions:
 Learned:  
@@ -212,6 +214,8 @@ Learned:
 - [x] Detailpage renders data
 - [x] Core feature works :white_check_mark:
 - [ ] Put favouritesArray in a db like MongoDB (with session)
+- [ ] dotenv for api
+
 #### Readme:
 - [ ] Build command in Install proces
 

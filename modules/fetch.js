@@ -12,7 +12,7 @@ async function fetchData(url) {
   return jsonData;
 }
 
-async function getData(url) {
+async function getData() {
   //   const likeBtn = document.getElementById('likeBtn');
   //   if (likeBtn) {
   //     likeBtn.setAttribute('disabled', true); // Set button to disabled, so that you're not able to like the unfetched data
