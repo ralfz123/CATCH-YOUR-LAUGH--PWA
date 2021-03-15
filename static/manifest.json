@@ -1,24 +1,25 @@
 {
-  "name": "Catch Your Laugh",
-  "short_name": "Catch Your Laugh",
+  "name": "CATCH YOUR LAUGH",
+  "short_name": "CYL 😹",
+  "description": "CATCH YOUR LAUGH is an funny nice-to-have when you are at a boring party and you want to laugh.",
   "theme_color": "#2c28bb",
   "background_color": "#ffffff",
   "display": "standalone",
   "scope": "/",
-  "start_url": "/hoi",
+  "start_url": "/",
   "icons": [
     {
-      "src": "./images/pwa/cat-icon-72.png",
+      "src": "./assets/manifest-icons/icon-72.png",
       "sizes": "72x72",
       "type": "image/png"
     },
     {
-      "src": "./images/pwa/cat-icon-192.png",
+      "src": "./assets/manifest-icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "./images/pwa/cat-icon-512.png",
+      "src": "./assets/manifest-icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }

@@ -200,6 +200,7 @@ Learned:
 - [x] Added error state
 - [ ] Only fetch when hit another combo or first visit site. Not when clicking from `/favourites` to `/`
 - [ ] Feedback loader while fetching (combining client to serverside rendering)
+- [ ] Serverworker ON and I can not add favourites :(
 
 #### Code:
 - [x] Render data home
@@ -237,6 +238,8 @@ Credits to [Joost Faber](https://github.com/joostf) && [Koop](https://github.com
 - Sitepoint (n.d.) Understanding Modules - Sitepoint. Retrieved 9 March 2021 from https://www.sitepoint.com/understanding-module-exports-exports-node-js/
 
 - Youtube (n.d.) Registering a Service Worker - The Net Ninja. Retrieved 15 March 2021 from https://www.youtube.com/watch?v=6s697AJdlB8
+
+sw - 15 march - https://developers.google.com/web/fundamentals/primers/service-workers
 
 ## :cop: License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  

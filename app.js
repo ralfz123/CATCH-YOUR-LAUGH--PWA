@@ -14,9 +14,6 @@ let favouritesArray = []; // Empty array that will filled with objects through t
 
 // Using static files from static directory
 app.use(express.static('static'));
-app.use('/styles', express.static(__dirname + 'static/styles'));
-app.use('/scripts', express.static(__dirname + 'static/scripts'));
-app.use('/icons', express.static(__dirname + 'static/icons'));
 
 // app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -43,17 +40,17 @@ app.get('/', async (req, res) => {
   res.render('index.ejs', { catData, jokeData });
 });
 
-app.post('/fetchData', getButtonData);
+// app.post('/fetchData', getButtonData);
 
-function getButtonData(req, res) {
-  console.log('Function is reached')
-  // res.send({receivedData})
-  // const receivedData = await getData();
-  // console.log(receivedData)
-  // res.setHeader('Content-Type', 'application/json');
-  // res.send({ receivedData });
+// function getButtonData(req, res) {
+//   console.log('Function is reached')
+//   // res.send({receivedData})
+//   // const receivedData = await getData();
+//   // console.log(receivedData)
+//   // res.setHeader('Content-Type', 'application/json');
+//   // res.send({ receivedData });
   
-}
+// }
 
 app.post('/', function (req, res) {
   const favData = {
