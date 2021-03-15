@@ -86,7 +86,7 @@ app.get('/error', function (req, res) {
   res.render('404.ejs');
 });
 
-app.listen(port, () => console.log(`App is running on port ${port}`));
+app.listen(process.env.PORT, () => console.log(`App is running on port ${port}`));
 
 // Finds the right object that is equal to the given id parameter
 function findObject(id) {
