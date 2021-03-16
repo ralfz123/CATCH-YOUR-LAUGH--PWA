@@ -1,5 +1,7 @@
 import { getData } from './utils/fetch.js';
 import { renderData } from './modules/render.js';
+import {checkFavsBtn} from './accesFavs.js'
+checkFavsBtn()
 
 /**
  * IIFE Function that starts the app, within all feature-functions
@@ -15,4 +17,13 @@ import { renderData } from './modules/render.js';
 
 // if ('serviceWorker' in navigator) {
 //   navigator.serviceWorker.register('../service-worker.js');
+// }
+
+// if ('serviceWorker' in navigator) {
+//   window.addEventListener("load", function() {
+//       navigator.serviceWorker.register('../service-worker.js')
+//           .then(function(registration) {
+//               return registration.update();
+//           })
+//   });
 // }

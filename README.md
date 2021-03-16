@@ -204,7 +204,8 @@ Feedback user:
     - [x] Feedback like
 - [ ] Serverworker ON and I can not add favourites :(
 - [ ] Count indexOf object in global array, so the number => id of the object can be shown at detail page
-- [x] Deployed :rocket:
+- [x] Deployed app:rocket:
+- [x] Fetch on hit button 'Another Combo' --> but page reloads also and url changes...
 
 #### Code:
 - [x] Render data home
@@ -220,6 +221,7 @@ Feedback user:
 - [x] Core feature works :white_check_mark:
 - [ ] Put favouritesArray in a db like MongoDB (with session)
 - [ ] dotenv for api
+- [ ] Serviceworker works not perfect; CSS doesn't load.
 
 #### Readme:
 - [ ] Build command in Install proces

@@ -102,7 +102,7 @@ main section#combo-generator {
   justify-items: center;
 }
 
-main section#combo-generator form {
+main section#combo-generator form:nth-child(2) {
   display: grid;
   grid-template-areas:
     'cats   jokes'
@@ -114,8 +114,17 @@ main section#combo-generator form {
   grid-gap: 5px;
 }
 
-main section#combo-generator form input {
+main section#combo-generator form:nth-child(2) input {
   display: none;
+}
+
+main section#combo-generator form:nth-child(3) {
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  z-index: 4;
+  top: 23em;
+  left: 8em;
 }
 
 /* ------ CATS ------- */
@@ -133,7 +142,7 @@ main section#combo-generator form input {
     filter: blur(10px);
     transform: scale(0.2) translateX(0px);
   }
-  25%{
+  25% {
     transform: translateX(-20px);
   }
   50% {
@@ -175,7 +184,7 @@ main section#combo-generator form input {
     filter: blur(10px);
     transform: scale(0.2) translateX(0px);
   }
-  25%{
+  25% {
     transform: translateX(20px);
   }
   50% {
@@ -225,6 +234,7 @@ main section#combo-generator form input {
   transition: background-color 0.1s;
   width: 12em;
   margin: 0 auto;
+  cursor: not-allowed;
 }
 
 #like-area #likeBtn {
@@ -288,7 +298,7 @@ main section#combo-generator form input {
 .feedback-like {
   grid-area: cats;
   position: absolute;
-  z-index: 2;
+  z-index: 5;
   font-size: 16rem;
   width: 2em;
   top: 0.5em;
@@ -314,7 +324,7 @@ main section#combo-generator form input {
 /* ------ Another combo button ------- */
 
 #comboBtn {
-  grid-area: button;
+  /* grid-area: button; */
   justify-self: center;
   align-self: center;
   padding: 8px 10px;

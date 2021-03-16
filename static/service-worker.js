@@ -1,35 +1,26 @@
-const staticCache = 'site-static';
-const assets = [
-  // '/favourites',
-  // './favicon.svg',
-  // '/scripts/main.js',
-  // '/styles/main.css',
-  // 'https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap',
-  // 'https://fonts.gstatic.com/s/quicksand/v22/6xKtdSZaM9iE8KbpRA_hJFQNYuDyP7bh.woff2',
-  // '../static',
-  './offline.html',
+const CORE_CACHE_NAME = 'site-static';
+const CORE_ASSETS = [
+  '/',
+  'anotherCombo',
+  // '/favourites', // Only when there is data accessible
+  '/offline',
+  '/styles/main.css',
+  '/assets',
+  'https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap',
+  'https://fonts.gstatic.com/s/quicksand/v22/6xKtdSZaM9iE8KbpRA_hJFQNYuDyP7bh.woff2',
 ];
 
 self.addEventListener('install', (event) => {
   // console.log('install');
 
-  // Pre caching assets
-  // Does not finish install event until this promise below is resolved
+  // Pre caching assets - Does not finish install event until this promise below is resolved
   event.waitUntil(
-    caches.open(staticCache).then((cache) => {
-      console.log('caching assets');
-      cache.addAll(assets)
-      .then(() => self.skipWaiting());
-    })
+    caches
+      .open(CORE_CACHE_NAME)
+      // console.log('caching assets');
+      .then((cache) => cache.addAll(CORE_ASSETS))
+      .then(() => self.skipWaiting())
   );
-
-  // skipWaiting()
-  // const cacheLoc = ['/offline.html'];
-  // event.waitUntil(
-  //   caches.open('my-cache').then(function (cache) {
-  //     return cache.addAll(cacheLoc).then(() => self.skipWaiting());
-  //   })
-  // );
 });
 
 self.addEventListener('activate', (event) => {
@@ -45,23 +36,54 @@ self.addEventListener('fetch', (event) => {
   // );
 
   // Source: https://deanhume.com/create-a-really-really-simple-offline-page-using-service-workers/
+  // if (
+  //   event.request.mode === 'navigate' ||
+  //   (event.request.method === 'GET' &&
+  //     event.request.headers.get('accept').includes('text/html'))
+  // ) {
+  //   event.respondWith(
+  //     fetch(event.request.url).catch((error) => {
+  //       // Return the offline page
+  //       return caches.match(assets);
+  //     })
+  //   );
+  // } else {
+  //   // Respond with everything else if we can
+  //   event.respondWith(
+  //     caches.match(event.request).then(function (cacheRes) {
+  //       return cacheRes || fetch(event.request);
+  //     })
+  //   );
+  // }
 
+// Saves visited pages/content and send offline page when internet is broken --> has to send offline when on home?
   if (
     event.request.mode === 'navigate' ||
     (event.request.method === 'GET' &&
       event.request.headers.get('accept').includes('text/html'))
   ) {
     event.respondWith(
-      fetch(event.request.url).catch((error) => {
-        // Return the offline page
-        return caches.match(assets);
-      })
-    );
-  } else {
-    // Respond with everything else if we can
-    event.respondWith(
-      caches.match(event.request).then(function (cacheRes) {
-        return cacheRes || fetch(event.request);
+      caches.open(CORE_CACHE_NAME).then((cache) => {
+        return (
+          cache
+            .match(event.request)
+            .then((response) => {
+              if (response) {
+                return response;
+              }
+              // Adds page to cache
+              return fetch(event.request).then((response) => {
+                cache.put(event.request, response.clone());
+                return response;
+              });
+            })
+            // When internet connection is broken
+            .catch((err) => {
+              return caches
+                .open(CORE_CACHE_NAME)
+                .then((cache) => cache.match('/offline'));
+            })
+        );
       })
     );
   }

@@ -1,6 +1,5 @@
-//                            //
 // **** IMPORT PACKAGES  **** //
-//                            //
+
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -9,12 +8,12 @@ const bodyParser = require('body-parser');
 const getData = require('./modules/utils/fetch.js');
 const { clickLikeBtn, checkDuplicateFav } = require('./modules/like.js');
 const findObject = require('./modules/utils/findObject.js');
+// const checkFavsBtn = require('.')
 
 let favouritesArray = []; // Empty array that will filled with objects through the hit like button
 
-//                             //
+
 // **** MIDDLEWARE SET-UP **** //
-//                             //
 // Using static files from static directory
 app.use(express.static('static'));
 
@@ -24,10 +23,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
-//                             //
+
 // ******** ROUTING ********** //
-//                             //
-app.get('/', async (req, res) => {
+app.get('/', async function (req, res) {
   // Get data through fetch and put in a variable called dataAll
   const dataAll = await getData();
 
@@ -38,18 +36,6 @@ app.get('/', async (req, res) => {
   // Render data
   res.render('index.ejs', { catData, jokeData });
 });
-
-// app.post('/fetchData', getButtonData);
-
-// function getButtonData(req, res) {
-//   console.log('Function is reached')
-//   // res.send({receivedData})
-//   // const receivedData = await getData();
-//   // console.log(receivedData)
-//   // res.setHeader('Content-Type', 'application/json');
-//   // res.send({ receivedData });
-
-// }
 
 app.post('/', function (req, res) {
   const favData = {
@@ -63,6 +49,20 @@ app.post('/', function (req, res) {
   favouritesArray.push(favData);
   // checkDuplicateFav(favouritesArray); // Has to be activated
   checkDuplicateFavItems();
+  // checkFavsBtn();
+});
+
+// Fetch another combo
+app.post('/anotherCombo', async function (req, res) {
+  // Get data through fetch and put in a variable called dataAll
+  const dataAll = await getData();
+
+  // Declare data variables for better use in .ejs files
+  const catData = dataAll.filteredDataCat;
+  const jokeData = dataAll.filteredDataJokes;
+
+  // Render data
+  res.render('index.ejs', { catData, jokeData });
 });
 
 app.get('/favourites', function (req, res) {
@@ -86,6 +86,10 @@ app.get('/favourites/:id', function (req, res) {
 app.get('/error', function (req, res) {
   res.render('404.ejs');
 });
+
+app.get('/offline', function (req,res){
+  res.render('offline.ejs')
+})
 
 app.listen(PORT, () => console.log(`App is running on port ${PORT}`));
 
