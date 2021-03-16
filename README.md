@@ -213,8 +213,9 @@ Feedback user:
 - [x] Pass data via views 
 - [x] Server side fetch with npm package 
 - [ ] responsive css added
-- [ ] Rollup (toolip / static site generator)
+- [ ] Rollup/gulp (tooling / static site generator)
     - [ ] minify
+    - [ ] Compiler/builder
 - [x] Page renders data
 - [x] Add fav and fav list renders fav items
 - [x] Detailpage renders data
@@ -223,8 +224,12 @@ Feedback user:
 - [ ] dotenv for api
 - [ ] Serviceworker works not perfect; CSS doesn't load.
 
+
 #### Readme:
 - [ ] Build command in Install proces
+
+#### Backlog
+- [ ] Choice via button to filter on joke type (programming/animals/etc..) --> fetch different APIs
 
 
 </details>
