@@ -629,7 +629,11 @@ main section#error {
   border-radius: 10px;
 }
 
-main section#error a {
+main section#error h1 {
+  font-size: 4rem;
+}
+
+main section#error h3 a {
   border-radius: 0;
   background: none;
   color: black;
@@ -641,24 +645,102 @@ main section#error a {
   transition: 0.1s;
 }
 
-main section#error a:hover {
+main section#error a:hover,
+main section#error a:focus {
   color: #2c28bb;
   text-decoration: underline;
 }
 
-main section#error h2 {
-  filter: drop-shadow(0 0 10px black);
-  animation: shake 1.5s ease-in-out alternate infinite;
-  font-size: 7rem;
+main section#error > h3 {
   margin-top: 1em;
 }
 
-@keyframes shake {
-  0% {
+main section#error > p {
+  margin-top: 2em;
+}
+
+main section#error ol {
+  width: 20em;
+  text-align: center;
+  justify-content: center;
+  display: block;
+  margin: 0 auto;
+}
+
+main section#error li {
+  position: relative;
+  width: 10em;
+  padding: 0px;
+  display: block;
+  margin: 0.1em auto;
+  transition: 0.1s;
+}
+
+main section#error li:hover {
+  background: #ececec;
+  border-radius: 5px;
+}
+
+main section#error li:hover a {
+  font-weight: 700;
+}
+
+main section#error li:hover a:before {
+  content: '→';
+  display: inline;
+  position: absolute;
+  z-index: 6;
+  left: 0;
+}
+
+main section#error li a {
+  border-radius: 0;
+  background: none;
+  color: black;
+  font-weight: 100;
+  padding: 0.3em 3em;
+  display: block;
+  text-decoration: none;
+  border: none;
+  text-transform: none;
+  transition: 0.1s;
+}
+
+main section#error h2 {
+  filter: drop-shadow(0 0 3px black);
+  /* box-shadow: 0 -10px 10px black; */
+  animation: move 1.5s ease-in-out alternate infinite;
+  font-size: 4rem;
+  /* margin-top: 1em; */
+
+  /* filter: drop-shadow(0 0 10px black);
+  animation: move 1.5s ease-in-out alternate infinite;
+  font-size: 7rem;
+  margin-top: 1em;
+  position: absolute;
+  z-index: 8;
+  top: 0;
+  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center; */
+}
+
+@keyframes move {
+  /* 0% {
     transform: translateY(-30px);
   }
   100% {
     transform: translateY(0px);
+  } */
+
+  0% {
+    transform: translateX(-5px) rotate(-20deg);
+  }
+  100% {
+    transform: translateX(5px) rotate(20deg);
   }
 }
 

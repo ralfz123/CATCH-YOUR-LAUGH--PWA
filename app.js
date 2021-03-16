@@ -12,7 +12,6 @@ const findObject = require('./modules/utils/findObject.js');
 
 let favouritesArray = []; // Empty array that will filled with objects through the hit like button
 
-
 // **** MIDDLEWARE SET-UP **** //
 // Using static files from static directory
 app.use(express.static('static'));
@@ -22,7 +21,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Setting views (EJS)
 app.set('views', './views');
 app.set('view engine', 'ejs');
-
 
 // ******** ROUTING ********** //
 app.get('/', async function (req, res) {
@@ -83,13 +81,40 @@ app.get('/favourites/:id', function (req, res) {
   }
 });
 
+// Error handler
+// app.use(function (req, res, next) {
+//   res.status(404);
+
+//   // respond with html page
+//   if (req.accepts('html')) {
+//     res.render('404.ejs', { url: req.url });
+//     return;
+//   }
+
+//   // respond with json
+//   if (req.accepts('json')) {
+//     res.send({ error: 'Not found' });
+//     return;
+//   }
+
+//   // default to plain-text. send()
+//   res.type('txt').send('Not found');
+// });
+
+// Page that doesn't exist
+app.get('/*', function (req, res) {
+  res.render('404.ejs');
+});
+
+// Error page
 app.get('/error', function (req, res) {
   res.render('404.ejs');
 });
 
-app.get('/offline', function (req,res){
-  res.render('offline.ejs')
-})
+// Offline page
+app.get('/offline', function (req, res) {
+  res.render('offline.ejs');
+});
 
 app.listen(PORT, () => console.log(`App is running on port ${PORT}`));
 

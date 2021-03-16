@@ -190,6 +190,10 @@ first time I work with serviceworker
 Learned:  
 - Module.exports in Node.js
 
+### Job story
+#### Serverworker --- cache
+At the moment I want to add a new favourite, it is added to a global array. But at the moment when the list where the page lives is `/favourites`. When the app starts (and during the app), this page **must not** be added to the cache. Because when you hit the like button to create a new fav combo and you want to see the fav list, you click on MY FAVOURITES and go to `/favourites`. The service worker takes then this page from the cache and you see an empty fav list. Therefore you need to whitelist `/favourites` so this page won't be cached, but retrieved from the server. But on the other side I want to see my fav list when I am offline.
+
 ## To-Do's :pencil:
 <details>
 <summary>Expand</summary>
@@ -206,6 +210,7 @@ Feedback user:
 - [ ] Count indexOf object in global array, so the number => id of the object can be shown at detail page
 - [x] Deployed app:rocket:
 - [x] Fetch on hit button 'Another Combo' --> but page reloads also and url changes...
+- [ ] Delete fav item
 
 #### Code:
 - [x] Render data home
@@ -223,6 +228,7 @@ Feedback user:
 - [ ] Put favouritesArray in a db like MongoDB (with session)
 - [ ] dotenv for api
 - [ ] Serviceworker works not perfect; CSS doesn't load.
+    - [ ] Cache don't save `/favourites`, because new items are being added through user
 
 
 #### Readme:
