@@ -3,12 +3,13 @@ const CORE_ASSETS = [
   // '/',
   // '/anotherCombo',
   // '/favourites', // Only when there is data accessible
-  // '/offline',
-  // '/styles/main.css',
+  '/offline',
+  '/styles/main.css',
   // '/assets/app-icons/offline_logo.svg',
   // 'https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap',
   // 'https://fonts.gstatic.com/s/quicksand/v22/6xKtdSZaM9iE8KbpRA_hJFQNYuDyP7bh.woff2',
 ];
+const CORE_WHITELIST = ['/favourites'];
 
 self.addEventListener('install', (event) => {
   console.log('install');
@@ -28,7 +29,7 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  console.log('fetch', event.request);
+  // console.log('fetch', event.request);
 
   // Saves visited pages/content and send offline page when internet is broken --> has to send offline when on home?
   if (

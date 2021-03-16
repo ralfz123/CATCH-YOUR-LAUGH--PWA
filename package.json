@@ -14,7 +14,8 @@
     "build-js-cs": "build js",
     "build-js-ss": "build js",
     "build-css": "build css",
-    "deploy": "build && git push heroku master"},
+    "deploy": "build && git push heroku master"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ralfz123/progressive-web-apps-2021.git"
