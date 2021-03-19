@@ -9,7 +9,7 @@ const CORE_ASSETS = [
   // 'https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap',
   // 'https://fonts.gstatic.com/s/quicksand/v22/6xKtdSZaM9iE8KbpRA_hJFQNYuDyP7bh.woff2',
 ];
-const CORE_WHITELIST = ['/favourites'];
+// const CORE_WHITELIST = ['/favourites'];
 
 self.addEventListener('install', (event) => {
   console.log('install');

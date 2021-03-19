@@ -10,7 +10,7 @@ const { clickLikeBtn, checkDuplicateFav } = require('./modules/like.js');
 const findObject = require('./modules/utils/findObject.js');
 // const checkFavsBtn = require('.')
 
-let favouritesArray = []; // Empty array that will filled with objects through the hit like button
+let favouritesArray = require('./modules/data.js');
 
 // **** MIDDLEWARE SET-UP **** //
 // Using static files from static directory
@@ -37,7 +37,6 @@ app.get('/', async function (req, res) {
 
 app.post('/', function (req, res) {
   const favData = {
-    // id: countFavItem(),
     cat: req.body.cat,
     id: req.body.id,
     setup: req.body.joke,
@@ -117,14 +116,6 @@ app.get('/offline', function (req, res) {
 });
 
 app.listen(PORT, () => console.log(`App is running on port ${PORT}`));
-
-// NOT WORKING - Making an id, so it can be showed at the detail page
-function countFavItem() {
-  let count = 0;
-  for (var i = count; i <= count; i++) {
-    count += 1;
-  }
-}
 
 // Checks if the liked combo is not a duplicate, then it won't be saved in the favourites list
 function checkDuplicateFavItems() {
