@@ -1,13 +1,11 @@
 const CORE_CACHE_NAME = 'site-static';
 const CORE_ASSETS = [
-  // '/',
-  // '/anotherCombo',
   // '/favourites', // Only when there is data accessible
   '/offline',
   '/styles/main.css',
-  // '/assets/app-icons/offline_logo.svg',
-  // 'https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap',
-  // 'https://fonts.gstatic.com/s/quicksand/v22/6xKtdSZaM9iE8KbpRA_hJFQNYuDyP7bh.woff2',
+  '/assets/app-icons/offline_logo.svg',
+  'https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap',
+  'https://fonts.gstatic.com/s/quicksand/v22/6xKtdSZaM9iE8KbpRA_hJFQNYuDyP7bh.woff2',
 ];
 // const CORE_WHITELIST = ['/favourites'];
 
@@ -46,13 +44,27 @@ self.addEventListener('fetch', (event) => {
               if (response) {
                 return response;
               }
-              // Adds page to cache
+
+              // When offline, then take last visit '/favourites'
+              // function that saves '/' && '/favourites' at the last moment the user has visited the page - update '/favourites'
+              // Delete '/favourites/ from assets and add again (update pattern)
+
+              // if (event.request.url.indexOf('/favourites')) {
+              //   caches
+              //     .open(CORE_CACHE_NAME)
+              //     .then((cache) => cache.match('/favourites').delete);
+              //   console.log(caches.open);
+              // }
+
+
+              // Adds page to cache assets
               return fetch(event.request).then((response) => {
                 cache.put(event.request, response.clone());
+                console.log('added to cache');
                 return response;
               });
             })
-            // When internet connection is broken
+            // When internet connection is broken and the page is not a cached asset, respond with /offline
             .catch((err) => {
               return caches
                 .open(CORE_CACHE_NAME)

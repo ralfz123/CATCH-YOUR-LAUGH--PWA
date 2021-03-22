@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <%- include ('../partials/head') %>
     <title>Favourites | CYL 😹</title>
@@ -13,9 +15,8 @@
         <button class="deleteAllBtn">Delete all</button>
 
         <ol>
-          <% if(favouritesArray.length > 0){ %>
-            
-            <% favouritesArray.forEach(({cat, setup, punchline, id}) => { %>
+          <% if(favouritesArray.length > 0){ %> <%
+          favouritesArray.forEach(({cat, setup, punchline, id}) => { %>
           <li>
             <img src="<%= cat %>" alt="" />
             <div>
@@ -30,13 +31,11 @@
               </form>
             </div>
           </li>
-          <% }) %> 
-          
-          <% }else{ %>
+          <% }) %> <% }else{ %>
           <p>No favourite combo's yet 🙁</p>
           <% }%>
         </ol>
       </section>
     </main>
-    
+
     <%- include ('../partials/footer') %>

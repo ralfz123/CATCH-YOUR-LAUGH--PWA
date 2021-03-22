@@ -239,7 +239,6 @@ main section#combo-generator form:nth-child(2) {
   transition: background-color 0.1s;
   width: 12em;
   margin: 0 auto;
-  cursor: not-allowed;
 }
 
 #like-area #likeBtn {

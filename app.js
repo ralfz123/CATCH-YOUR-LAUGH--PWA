@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
-const router = require('./modules/router/router.js');
+const router = require('./routes/router.js');
 
 // **** MIDDLEWARE SET-UP **** //
 // Using static files from static directory
