@@ -5,45 +5,6 @@
 # CATCH YOUR LAUGH - Progressive Web App
 _Progressive Web Apps, a course of the minor Web Design & Development. It is a minor of the third year from the study [CMD](https://www.cmd-amsterdam.nl/)._
 
-
-*** 
-# Course info for me [begin]
-## Learning goals
-- _You understand the difference between client side and server side rendering and you can apply server side rendering_
-in your application_
-- _You understand how a Service Worker works and you can implement it in your application._
-- _You understand how the critical render path works and how you can optimize it for a better runtime and / or perceived performance._
-
-[Rubric with learning goals](https://icthva.sharepoint.com/:x:/r/sites/FDMCI_EDU__CMD20_21_Minor_Web_5i7j73jt/_layouts/15/Doc.aspx?sourcedoc=%7B276F53A7-2531-4006-8AD2-08C9A82D3A11%7D&file=PWA%202021%20Rubric.xlsx&action=edit&mobileredirect=true&wdPreviousSession=92686bea-446f-40e3-9303-33fa3f832b82&wdOrigin=TEAMS-ELECTRON.teams.undefined)
-
-## Program
-
-### Week 1 - Server Side Rendering 📡
-
-Goal: Render web pages server side
-
-[Exercises](https://github.com/cmda-minor-web/progressive-web-apps-2021/blob/master/course/week-1.md)    
-[Server Side Rendering - slides Declan Rek](https://github.com/cmda-minor-web/progressive-web-apps-1920/blob/master/course/cmd-2021-server-side-rendering.pdf)  
-
-
-### Week 2 - Progressive Web App 🚀
-
-Goals: Convert application to a Progressive Web App
-
-[Exercises](https://github.com/cmda-minor-web/progressive-web-apps-2021/blob/master/course/week-2.md)  
-[Progressive Web Apps - slides Declan Rek](https://github.com/cmda-minor-web/progressive-web-apps-1920/blob/master/course/cmd-2020-progressive-web-apps.pdf)
-
-
-### Week 2 - Critical Rendering Path 📉 
-
-Doel: Optimize the Critical Rendering Path   
-[Exercises](https://github.com/cmda-minor-web/progressive-web-apps-2021/blob/master/course/week-3.md)  
-[Critical Rendering Path - slides Declan Rek](https://github.com/cmda-minor-web/progressive-web-apps-1920/blob/master/course/cmd-2020-critical-rendering-path.pdf)
-
-
-# Course info for me [end]
-***
-
 [Link to live version :rocket:](https://catch-your-laugh.herokuapp.com/)
 ### Table of Contents
 <table style="margin-left: auto; margin-right: auto;">
@@ -88,7 +49,7 @@ This app is built, using:
 - [Node.js server](https://nodejs.org/)
 - [Express router](https://expressjs.com/)
 - [EJS Templating engine](https://ejs.co/)
-- [Rollup tooling](https://rollupjs.org/guide/en/#introduction)
+- [Gulp tooling](https://gulpjs.com/)
 - [Heroku deployment](https://www.heroku.com/nodejs)
 
 ## :gear: Installation
@@ -171,7 +132,66 @@ In the `.ejs` file
 ```
 
 ### Building
-For the building I used Rollup.js. It was for me the first time I used a bundler/tooling. At the moment I struggle with building/minifying my code.
+For the building I used Gulp. It was for me the first time I used a bundler/tooling. At the beginning I struggled a lot with building/minifying my code, because I didn't get it. But now I understand what tooling is. Tooling is a feature for the developer to smart and fast build your application. I used the order from: 1) build files 2) start nodemon server. For deploying I used npm run build and then it empties the folders in `/public` and then the files were build (minified). Here are my npm scripts in the [package.json](https://github.com/ralfz123/CATCH-YOUR-LAUGH--PWA/blob/master/package.json).
+
+```
+"start": "node app.js",
+"dev": "build && nodemon start",
+"build": "npm-run-all build:*",
+"prebuild:css": "rimraf \"public/css\"",
+"build:css": "npm run prebuild:css && node buildscripts/build-css.js",
+"prebuild:js": "rimraf \"public/js\"",
+"build:js": "npm run prebuild:js && node buildscripts/build-js.js",
+"prebuild:assets": "rimraf \"public/assets\"",
+"build:assets": "npm run prebuild:assets && node buildscripts/build-assets.js",
+"prebuild:icons": "rimraf \"public/icons\"",
+"build:icons": "npm run prebuild:icons && node buildscripts/build-icons.js",
+"deploy": "git push && git push heroku master"
+```
+
+#### Build CSS
+```js
+const gulp = require('gulp');
+const cleanCSS = require('gulp-clean-css');
+
+return gulp
+  .src(['./static/styles/main.css'])
+  .pipe(cleanCSS())
+  .pipe(gulp.dest('./public/css'));
+
+```
+
+#### Build JS
+```js
+const gulp = require('gulp');
+const concat = require('gulp-concat');
+
+return gulp
+  .src(['./static/scripts/*.js'])
+  .pipe(concat('bundle.min.js'))
+  .pipe(gulp.dest('./public/js'));
+
+```
+
+#### Build assets
+```js
+const gulp = require('gulp');
+
+return gulp
+    .src(['./static/assets/*'])
+    .pipe(gulp.dest('./public/assets'));
+
+```
+
+#### Build icons
+```js
+const gulp = require('gulp');
+
+return gulp
+    .src(['./static/icons/*'])
+    .pipe(gulp.dest('./public/icons/'));
+
+```
 
 ### Deploying
 To deploy my application I used Heroku for the first time. It's easy to use, but my deployment isn't finished yet. Something went wrong with the `favicon path` 😕 . 
@@ -183,8 +203,14 @@ To deploy my application I used Heroku for the first time. It's easy to use, but
 4. catch-your-laugh.herokuapp.com // Build is done and deployed
 ```
 
+### Performance
+Before after minifying
+Screenshots!
+
+- It works I think 5 miliseconds faster with the minified code :)
+
 ### Serviceworker
-first time I work with serviceworker
+first time I work with serviceworker and tooling
 
 ## Challenges / Inventions:
 Learned:  
@@ -232,6 +258,7 @@ Feedback user:
     - [ ] Serve offline pages for features that are not cached
 - [ ] Put router in modules
 - [ ] Put render in modules
+- [ ] Dark theme client side JS
 
 
 #### Readme:

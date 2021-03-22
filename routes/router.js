@@ -8,7 +8,6 @@ const getData = require('../modules/utils/fetch.js');
 
 let favouritesArray = require('../modules/data.js');
 const findObject = require('../modules/utils/findObject.js');
-// const checkFavsBtn = require('.')
 const { clickLikeBtn, checkDuplicateFav } = require('../modules/like.js');
 
 // ******** ROUTING ********** //
@@ -36,7 +35,6 @@ router.post('/', function (req, res) {
   favouritesArray.push(favData);
   // checkDuplicateFav(favouritesArray); // Has to be activated
   checkDuplicateFavItems();
-  // checkFavsBtn();
 });
 
 // Fetch another combo

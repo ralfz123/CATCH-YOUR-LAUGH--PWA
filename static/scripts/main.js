@@ -1,29 +1,33 @@
-import { getData } from './utils/fetch.js';
-import { renderData } from './modules/render.js';
-import { checkFavsBtn } from './accesFavs.js';
+// import { clickLikeBtn } from './modules/like.js';
 
-// checkFavsBtn()
+clickLikeBtn();
+function clickLikeBtn() {
+  const likeBtn = document.getElementById('likeBtn');
+  if (likeBtn) {
+    likeBtn.addEventListener('click', function () {
+      feedbackLike(); // UX Feedback from the 'like'
+    });
+  }
+}
 
-/**
- * IIFE Function that starts the app, within all feature-functions
- *
- */
+function feedbackLike() {
+  let feedbackLike = document.createElement('p');
+  feedbackLike.setAttribute('class', 'feedback-like');
+  let newContent = document.createTextNode('❤️');
+  feedbackLike.appendChild(newContent);
+  let container = document.getElementById('like-area');
+  container.appendChild(feedbackLike);
 
-// (async function init() {
-// Get data through fetch and put in a variable called receivedData
-// const receivedData = await getData();
-// Render that data
-// renderData(receivedData.filteredDataCat, receivedData.filteredDataJoke);
-// })();
-
-// if ('serviceWorker' in navigator) {
-//   navigator.serviceWorker.register('../service-worker.js');
-// }
+  // Removes HTML feedback element that is made up here
+  setTimeout(function () {
+    feedbackLike.remove();
+  }, 1500);
+}
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
     navigator.serviceWorker
-      .register('../service-worker.js')
+      .register('../assets/service-worker.js')
       .then(function (registration) {
         return registration.update();
       });

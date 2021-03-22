@@ -9,16 +9,16 @@
   },
   "scripts": {
     "start": "node app.js",
-    "dev": "build && nodemon start",
+    "dev": "npm run build && nodemon start",
     "build": "npm-run-all build:*",
     "prebuild:css": "rimraf \"public/css\"",
-    "build:css": "npm run prebuild:css && node buildscripts/build-css.js",
+    "build:css": "npm run prebuild:css && node build/build-css.js",
     "prebuild:js": "rimraf \"public/js\"",
-    "build:js": "npm run prebuild:js && node buildscripts/build-js.js",
+    "build:js": "npm run prebuild:js && node build/build-js.js",
     "prebuild:assets": "rimraf \"public/assets\"",
-    "build:assets": "npm run prebuild:assets && node buildscripts/build-assets.js",
+    "build:assets": "npm run prebuild:assets && node build/build-assets.js",
     "prebuild:icons": "rimraf \"public/icons\"",
-    "build:icons": "npm run prebuild:icons && node buildscripts/build-icons.js",
+    "build:icons": "npm run prebuild:icons && node build/build-icons.js",
     "deploy": "git push && git push heroku master"
   },
   "repository": {

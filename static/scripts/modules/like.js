@@ -1,4 +1,3 @@
-import { renderFavItem } from './favItem.js';
 import { feedbackLike } from '../utils/feedback.js';
 
 let favouritesArray = []; // Empty array for keeping up the favourites data
