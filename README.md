@@ -217,7 +217,7 @@ Feedback user:
 - [ ] Not fetch when coming back at home
 - [x] Pass data via views 
 - [x] Server side fetch with npm package 
-- [ ] responsive css added
+- [x] responsive css added
 - [ ] Rollup/gulp (tooling / static site generator)
     - [ ] minify
     - [ ] Compiler/builder
@@ -229,6 +229,9 @@ Feedback user:
 - [ ] dotenv for api
 - [ ] Serviceworker works not perfect; CSS doesn't load.
     - [ ] Cache don't save `/favourites`, because new items are being added through user
+    - [ ] Serve offline pages for features that are not cached
+- [ ] Put router in modules
+- [ ] Put render in modules
 
 
 #### Readme:
