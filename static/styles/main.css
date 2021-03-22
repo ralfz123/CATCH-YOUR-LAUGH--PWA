@@ -475,11 +475,11 @@ main section#combo-generator form:nth-child(2) {
 }
 
 #favourites ol li .deleteBtn {
-  background-image: url('/assets/app-icons/trash.svg');
+  background-image: url('../icons/trash.svg');
 }
 
 #favourites ol li a.checkBtn {
-  background-image: url('/assets/app-icons/info.svg');
+  background-image: url('../icons/info.svg');
 }
 
 #favourites ol li .deleteBtn:hover {

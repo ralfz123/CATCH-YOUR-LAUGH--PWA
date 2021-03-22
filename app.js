@@ -7,7 +7,7 @@ const router = require('./routes/router.js');
 
 // **** MIDDLEWARE SET-UP **** //
 // Using static files from static directory
-app.use(express.static('static'));
+app.use(express.static('public'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
