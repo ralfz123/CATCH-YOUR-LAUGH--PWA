@@ -1,5 +1,3 @@
-import { getData } from '../utils/fetch.js';
-
 /**
  * A button that fetches and renders the data again
  *

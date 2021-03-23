@@ -37,6 +37,10 @@ self.addEventListener('fetch', (event) => {
   ) {
     event.respondWith(
       caches.open(CORE_CACHE_NAME).then((cache) => {
+        // if er is update, dan eruit
+        // check (if) naam overeen komt met en met id
+        // online - fav no cache
+        // offline - haal uit cache - update! // config --  er is nieuwe versie
         return (
           cache
             .match(event.request)

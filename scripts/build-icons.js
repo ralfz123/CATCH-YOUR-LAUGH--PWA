@@ -1,5 +1,5 @@
 const gulp = require('gulp');
 
 return gulp
-    .src(['./static/icons/*'])
+    .src('./src/icons/*')
     .pipe(gulp.dest('./public/icons/'));

@@ -12,13 +12,13 @@
     "dev": "npm run build && nodemon start",
     "build": "npm-run-all build:*",
     "prebuild:css": "rimraf \"public/css\"",
-    "build:css": "npm run prebuild:css && node build/build-css.js",
+    "build:css": "npm run prebuild:css && node scripts/build-css.js",
     "prebuild:js": "rimraf \"public/js\"",
-    "build:js": "npm run prebuild:js && node build/build-js.js",
+    "build:js": "npm run prebuild:js && node scripts/build-js.js",
     "prebuild:assets": "rimraf \"public/assets\"",
-    "build:assets": "npm run prebuild:assets && node build/build-assets.js",
+    "build:assets": "npm run prebuild:assets && node scripts/build-assets.js",
     "prebuild:icons": "rimraf \"public/icons\"",
-    "build:icons": "npm run prebuild:icons && node build/build-icons.js",
+    "build:icons": "npm run prebuild:icons && node scripts/build-icons.js",
     "deploy": "git push && git push heroku master"
   },
   "repository": {
@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
     "nodemon": "^2.0.7",
