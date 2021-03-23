@@ -1,6 +1,5 @@
-const getData = require('../modules/utils/fetch.js');
-
 let favouritesArray = require('../modules/data.js');
+const getData = require('../modules/utils/fetch.js');
 const findObject = require('../modules/utils/findObject.js');
 const { clickLikeBtn, checkDuplicateFav } = require('../modules/like.js');
 

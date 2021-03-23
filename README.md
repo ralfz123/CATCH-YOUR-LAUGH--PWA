@@ -32,6 +32,8 @@ In this course I will convert the client side web application previously made We
 ## :heart_eyes: Concept
 This application is a _rebuild_ from the [**CAT**CH YOUR LAUGH-application](https://github.com/ralfz123/CATCH-YOUR-LAUGH). Here I focus on the client- and serverside rendering and am I able to create a **P**rogressive **W**eb **A**pp.
 
+<img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH/master/assets/README/app-screenshot-2.png" width=400px />
+
 #### Features
 - By clicking on the 'ANOTHER COMBO' button you can see a different combination of a cat image and a joke
 - Like your favourite combination of a cat image and a joke

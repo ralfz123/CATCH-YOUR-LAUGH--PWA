@@ -45,18 +45,6 @@ self.addEventListener('fetch', (event) => {
                 return response;
               }
 
-              // When offline, then take last visit '/favourites'
-              // function that saves '/' && '/favourites' at the last moment the user has visited the page - update '/favourites'
-              // Delete '/favourites/ from assets and add again (update pattern)
-
-              // if (event.request.url.indexOf('/favourites')) {
-              //   caches
-              //     .open(CORE_CACHE_NAME)
-              //     .then((cache) => cache.match('/favourites').delete);
-              //   console.log(caches.open);
-              // }
-
-
               // Adds page to cache assets
               return fetch(event.request).then((response) => {
                 cache.put(event.request, response.clone());
