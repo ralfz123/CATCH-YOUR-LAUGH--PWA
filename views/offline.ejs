@@ -8,21 +8,21 @@
     <%- include ('./partials/header') %>
 
     <main>
-      <h1>❌You have no internet connection.</h1>
-      <h2>Please check your network connection and try again.</h2>
-      <img
-        src="/static/assets/app-icons/offline_logo.svg"
-        width="100px"
-        alt=""
-      />
+      <section id="offline">
+        <h1>❌You have no internet connection.</h1>
+        <h2>Please check your network connection and try again.</h2>
+        <img src="/icons/offline_logo.svg" width="100px" alt="" />
 
-      <p>Pages you can visit, because your cache:</p>
-      <p>(⚠️not working yet⚠️)</p>
-      <ol>
-        <li><a href="/test">test</a></li>
-        <li><a href="/lorem">lorem</a></li>
-        <li><a href="/ispum">ispum</a></li>
-      </ol>
+        <p>Pages you can visit, because your cache:</p>
+        <p>(⚠️not working yet⚠️)</p>
+        <ol>
+          <li><a href="/test">test</a></li>
+          <li><a href="/lorem">lorem</a></li>
+          <li><a href="/ispum">ispum</a></li>
+        </ol>
+      </section>
     </main>
 
     <%- include ('./partials/footer') %>
+  </body>
+</html>

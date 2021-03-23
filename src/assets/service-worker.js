@@ -1,11 +1,10 @@
 const CORE_CACHE_NAME = 'site-static';
 const CORE_ASSETS = [
-  // '/favourites', // Only when there is data accessible
+  // '/favourites',
   '/offline',
-  '/styles/main.css',
-  '/assets/app-icons/offline_logo.svg',
-  'https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap',
-  'https://fonts.gstatic.com/s/quicksand/v22/6xKtdSZaM9iE8KbpRA_hJFQNYuDyP7bh.woff2',
+  '/css/main.css',
+  // 'https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap',
+  // 'https://fonts.gstatic.com/s/quicksand/v22/6xKtdSZaM9iE8KbpRA_hJFQNYuDyP7bh.woff2',
 ];
 // const CORE_WHITELIST = ['/favourites'];
 
@@ -16,14 +15,18 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches
       .open(CORE_CACHE_NAME)
-      // console.log('caching assets');
       .then((cache) => cache.addAll(CORE_ASSETS))
-      .then(() => self.skipWaiting())
+      .then(self.skipWaiting())
   );
 });
 
 self.addEventListener('activate', (event) => {
   // console.log('activate');
+  // if er is --> update, dan eruit
+  // check (if) naam overeen komt met en met id
+  // online - fav no cache
+  // offline - haal uit cache - update! // config --  er is nieuwe versie
+  event.waitUntil(clients.claim());
 });
 
 self.addEventListener('fetch', (event) => {
@@ -35,57 +38,47 @@ self.addEventListener('fetch', (event) => {
     (event.request.method === 'GET' &&
       event.request.headers.get('accept').includes('text/html'))
   ) {
+    const req = event.request;
+    console.log('Fetching:' + req.url);
+
+    // show cached request from cache
+    event.respondWith(
+      caches.match(req).then((cachedRes) => {
+        if (cachedRes) {
+          return cachedRes;
+        }
+        return fetch(req)
+          .then((fetchRes) => fetchRes)
+          .catch((err) => {
+            return caches
+              .open(CORE_CACHE_NAME)
+              .then((cache) => cache.match('/offline'));
+          });
+      })
+    );
+
+    // save req to cache
     event.respondWith(
       caches.open(CORE_CACHE_NAME).then((cache) => {
-        // if er is update, dan eruit
-        // check (if) naam overeen komt met en met id
-        // online - fav no cache
-        // offline - haal uit cache - update! // config --  er is nieuwe versie
-        return (
-          cache
-            .match(event.request)
-            .then((response) => {
-              if (response) {
-                return response;
-              }
-
-              // Adds page to cache assets
-              return fetch(event.request).then((response) => {
-                cache.put(event.request, response.clone());
-                console.log('added to cache');
-                return response;
-              });
-            })
-            // When internet connection is broken and the page is not a cached asset, respond with /offline
-            .catch((err) => {
-              return caches
-                .open(CORE_CACHE_NAME)
-                .then((cache) => cache.match('/offline'));
-            })
-        );
+        return cache
+          .match(event.request)
+          .then((response) => {
+            if (response) {
+              return response;
+            }
+            return fetch(event.request).then((response) => {
+              cache.put(event.request, response.clone());
+              return response;
+            });
+          })
+          .catch((err) => {
+            return caches
+              .open(CORE_CACHE_NAME)
+              .then((cache) => cache.match('/offline'));
+          });
       })
     );
   }
 });
 
-// Fetch
-// Source: https://deanhume.com/create-a-really-really-simple-offline-page-using-service-workers/
-// if (
-//   event.request.mode === 'navigate' ||
-//   (event.request.method === 'GET' &&
-//     event.request.headers.get('accept').includes('text/html'))
-// ) {
-//   event.respondWith(
-//     fetch(event.request.url).catch((error) => {
-//       // Return the offline page
-//       return caches.match(assets);
-//     })
-//   );
-// } else {
-//   // Respond with everything else if we can
-//   event.respondWith(
-//     caches.match(event.request).then(function (cacheRes) {
-//       return cacheRes || fetch(event.request);
-//     })
-//   );
-// }
+// Fetch - source: https://deanhume.com/create-a-really-really-simple-offline-page-using-service-workers/
