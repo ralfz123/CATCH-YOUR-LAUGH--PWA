@@ -22,8 +22,6 @@ _Progressive Web Apps, a course of the minor Web Design & Development. It is a m
 ## :rocket: Purpose of Project
 In this course I will convert the client side web application previously made Web App From Scratch into a server side rendered application. I also add functionalities based on the Service Worker and turn the application into a Progressive Web App. Ultimately I'm going to implement a series of optimisations to improve the performance of the application. All the basic parts covered in this course are very useful to know when you later choose to make an app using a framework. All these parts are (almost) all automated in a framework and are therefore done for you. So it is helpful to know exactly how those parts work.
 
-- atomic design (wk1)
-
 ### Plan van Action
 1. Copy the WAFS app in this repo :white_check_mark:
 2. Delete the unnecessary features :white_check_mark:
@@ -41,7 +39,7 @@ This application is a _rebuild_ from the [**CAT**CH YOUR LAUGH-application](http
 
 To get more information about the app, for example it's APIs, check it [here](https://github.com/ralfz123/CATCH-YOUR-LAUGH/blob/master/README.md#heart_eyes-concept).
 
-### [NOT WORKING YET - Live version here :red_circle:](https://catch-your-laugh.herokuapp.com/)
+### [Live version here :red_circle:](https://catch-your-laugh.herokuapp.com/)
 
 ## :nerd_face: Technical summary
 This app is built, using:
@@ -111,24 +109,23 @@ An example of how I render a page and pass data with rendering
 
 ```js
 app.get('/', async (req, res) => {
-  // Get data
-  const dataCat = await getData(urlCats);
-  const dataJokes = await getData(urlJokes);
+   // Get data through fetch and put in a variable called dataAll
+  const dataAll = await getData();
 
-  // Filter data
-  const filteredDataCat = filterCatData(dataCat);
-  const filteredDataJokes = filterJokeData(dataJokes);
+  // Declare data variables for better use in .ejs files
+  const catData = dataAll.filteredDataCat;
+  const jokeData = dataAll.filteredDataJokes;
 
-  // Render page with data
-  res.render('index.ejs', { filteredDataCat, filteredDataJokes });
+  // Render data
+  res.render('index.ejs', { catData, jokeData });
 });
 ```
 
 In the `.ejs` file
 ```html
-<img src="<%= filteredDataCat.url %>" alt="">
-<label id="joke" for="joke"><%= filteredDataJokes.setup %></label>
-<label id="punchline" for="punchline"><%= filteredDataJokes.punchline %></label>
+<img src="<%= catData.url %>" alt="">
+<label id="joke" for="joke"><%= jokeData.setup %></label>
+<label id="punchline" for="punchline"><%= jokeData.punchline %></label>
 ```
 
 ### Building
@@ -194,7 +191,7 @@ return gulp
 ```
 
 ### Deploying
-To deploy my application I used Heroku for the first time. It's easy to use, but my deployment isn't finished yet. Something went wrong with the `favicon path` 😕 . 
+To deploy my application I used Heroku for the first time. It's easy to use, but my deployment had some issues with don't `GET` the `path` and the `favicon`. Now that issue is fixed to replace the `PORT` in my `app.js` with `process.env.PORT || 5000`.
 
 ```
 1. heroku create // Create heroku CLI
@@ -244,28 +241,28 @@ Feedback user:
 - [x] Pass data via views 
 - [x] Server side fetch with npm package 
 - [x] responsive css added
-- [ ] Rollup/gulp (tooling / static site generator)
-    - [ ] minify
-    - [ ] Compiler/builder
+- [x] gulp (tooling / static site generator)
+    - [x] minify
+    - [x] Compiler/builder
 - [x] Page renders data
 - [x] Add fav and fav list renders fav items
 - [x] Detailpage renders data
 - [x] Core feature works :white_check_mark:
-- [ ] Put favouritesArray in a db like MongoDB (with session)
 - [ ] dotenv for api
 - [ ] Serviceworker works not perfect; CSS doesn't load.
     - [ ] Cache don't save `/favourites`, because new items are being added through user
     - [ ] Serve offline pages for features that are not cached
-- [ ] Put router in modules
+- [x] Put router in modules
 - [ ] Put render in modules
 - [ ] Dark theme client side JS
 
 
 #### Readme:
-- [ ] Build command in Install proces
+- [x] Build command in Install proces
 
 #### Backlog
 - [ ] Choice via button to filter on joke type (programming/animals/etc..) --> fetch different APIs
+- [ ] Put favouritesArray in a db like MongoDB (with session)
 
 
 </details>
