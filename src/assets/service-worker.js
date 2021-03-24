@@ -26,59 +26,43 @@ self.addEventListener('activate', (event) => {
   // check (if) naam overeen komt met en met id
   // online - fav no cache
   // offline - haal uit cache - update! // config --  er is nieuwe versie
-  event.waitUntil(clients.claim());
+  // event.waitUntil(clients.claim());
 });
 
 self.addEventListener('fetch', (event) => {
   // console.log('fetch', event.request);
 
   // Saves visited pages/content and send offline page when internet is broken --> has to send offline when on home?
-  if (
-    event.request.mode === 'navigate' ||
-    (event.request.method === 'GET' &&
-      event.request.headers.get('accept').includes('text/html'))
-  ) {
-    const req = event.request;
-    console.log('Fetching:' + req.url);
-
-    // show cached request from cache
-    event.respondWith(
-      caches.match(req).then((cachedRes) => {
-        if (cachedRes) {
-          return cachedRes;
-        }
-        return fetch(req)
-          .then((fetchRes) => fetchRes)
-          .catch((err) => {
-            return caches
-              .open(CORE_CACHE_NAME)
-              .then((cache) => cache.match('/offline'));
-          });
-      })
-    );
-
-    // save req to cache
+  // if (
+  //   event.request.mode === 'navigate' ||
+  //   (event.request.method === 'GET' &&
+  //     event.request.headers.get('accept').includes('text/html'))
+  // ) {
     event.respondWith(
       caches.open(CORE_CACHE_NAME).then((cache) => {
-        return cache
-          .match(event.request)
-          .then((response) => {
-            if (response) {
-              return response;
-            }
-            return fetch(event.request).then((response) => {
-              cache.put(event.request, response.clone());
-              return response;
-            });
-          })
-          .catch((err) => {
-            return caches
-              .open(CORE_CACHE_NAME)
-              .then((cache) => cache.match('/offline'));
-          });
+        return (
+          cache
+            // if req is in cache, return with response
+            .match(event.request)
+            .then((response) => {
+              if (response) {
+                return response;
+              }
+              // save req to cache
+              return fetch(event.request).then((response) => {
+                cache.put(event.request, response.clone());
+                return response;
+              });
+            })
+            .catch((err) => {
+              return caches
+                .open(CORE_CACHE_NAME)
+                .then((cache) => cache.match('/offline'));
+            })
+        );
       })
     );
-  }
+  // }
 });
 
 // Fetch - source: https://deanhume.com/create-a-really-really-simple-offline-page-using-service-workers/
