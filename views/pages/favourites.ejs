@@ -11,8 +11,9 @@
       <section id="favourites">
         <h1>Favourites</h1>
         <a href="/">Back</a>
-
-        <button class="deleteAllBtn">Delete all</button>
+        <form action="/favourites/deleteAll" method="POST">
+          <button type="submit" class="deleteAllBtn">Delete all</button>
+        </form>
 
         <ol>
           <% if(favouritesArray.length > 0){ %> <%

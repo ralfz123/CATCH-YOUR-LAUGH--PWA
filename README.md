@@ -207,9 +207,9 @@ To deploy my application I used Heroku for the first time. It's easy to use, but
 
 <img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH--PWA/master/readme/performance-26-3.pngg" width=400px />
 
-Before after minifying
+Before & after minifying
 Screenshots!
-
+Though building/minifying it gets .5 seconds faster
 - It works I think 5 milliseconds faster with the minified code :)
 
 <img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH--PWA/master/readme/seo-optimisations.png" width=400px />
@@ -247,7 +247,9 @@ Feedback user:
 - [ ] Count indexOf object in global array, so the number => id of the object can be shown at detail page
 - [x] Deployed app:rocket:
 - [x] Fetch on hit button 'Another Combo' --> but page reloads also and url changes...
-- [ ] Delete fav item --> splice don't work good
+- [x] Delete fav item
+- [x] Delete all favs item
+
 
 #### Code:
 - [x] Render data home

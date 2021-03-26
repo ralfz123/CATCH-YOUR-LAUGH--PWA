@@ -2,6 +2,7 @@ let favouritesArray = require('../modules/data.js');
 const getData = require('../modules/utils/fetch.js');
 const findObject = require('../modules/utils/findObject.js');
 const { clickLikeBtn, checkDuplicateFav } = require('../modules/like.js');
+const url = require('url'); // built-in utility
 
 async function getHome(req, res) {
   // Get data through fetch and put in a variable called dataAll
@@ -28,17 +29,9 @@ function likeCombo(req, res) {
   checkDuplicateFavItems();
 }
 
-// Fetch another combo
+// Redirects to the home page
 async function anotherFetch(req, res) {
-  // Get data through fetch and put in a variable called dataAll
-  const dataAll = await getData();
-
-  // Declare data variables for better use in .ejs files
-  const catData = dataAll.filteredDataCat;
-  const jokeData = dataAll.filteredDataJokes;
-
-  // Render data
-  res.render('index.ejs', { catData, jokeData });
+  res.redirect(req.originalUrl.split('another?').shift());
 }
 
 function getFavourites(req, res) {
@@ -55,21 +48,22 @@ function deleteFavouriteItem(req, res) {
   };
 
   const favDataIndex = findObject(dataObject.id, favouritesArray);
-  // if (favDataIndex) {
-  favouritesArray = filterArray(favouritesArray, favDataIndex);
   console.log('index', favDataIndex);
 
-  function filterArray(array, objectIndex) {
-    const filteredArray = array.splice(objectIndex, 1);
-    console.log('filterdArray', filteredArray);
-    return filteredArray;
-  }
+  if (favDataIndex >= 0) {
+    favouritesArray = filterArray(favouritesArray, favDataIndex);
 
-  res.render('pages/favourites', { favouritesArray });
-  // } else {
-  //   console.log('not found');
-  //   res.redirect('/error');
-  // }
+    // Filters out the given objectIndex and returns the filtered array
+    function filterArray(array, objectIndex) {
+      array.splice(objectIndex, 1);
+      return array;
+    }
+
+    res.render('pages/favourites', { favouritesArray });
+  } else {
+    console.log('Index not found');
+    res.redirect('/error');
+  }
 }
 
 function getFavouriteItem(req, res) {
@@ -81,6 +75,12 @@ function getFavouriteItem(req, res) {
   } else {
     // res.redirect('/error');
   }
+}
+
+// Deletes all favourites
+function deleteAllFavourites(req, res) {
+  favouritesArray = []; // empty global array
+  res.redirect('/favourites');
 }
 
 // Error handler
@@ -147,6 +147,7 @@ module.exports = {
   getFavourites,
   deleteFavouriteItem,
   getFavouriteItem,
+  deleteAllFavourites,
   get404,
   getError,
   getOffline,

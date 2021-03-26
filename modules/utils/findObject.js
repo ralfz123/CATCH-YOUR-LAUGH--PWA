@@ -4,9 +4,8 @@ function findObject(id, favouritesArray) {
     return object.id == id;
   });
   const index = favouritesArray.indexOf(correctObject);
-  // console.log(index);
-  return index
-  // return correctObject;
+
+  return index;
 }
 
 module.exports = findObject;
