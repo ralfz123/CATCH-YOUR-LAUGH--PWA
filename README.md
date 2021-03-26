@@ -203,10 +203,20 @@ To deploy my application I used Heroku for the first time. It's easy to use, but
 ```
 
 ### Performance
+<img src="https://github.com/ralfz123/CATCH-YOUR-LAUGH--PWA/tree/master/readme/perform-best-prac-26-3.png" width=400px />
+
+<img src="https://github.com/ralfz123/CATCH-YOUR-LAUGH--PWA/tree/master/readme/performance-26-3.png" width=400px />
+
 Before after minifying
 Screenshots!
 
-- It works I think 5 miliseconds faster with the minified code :)
+- It works I think 5 milliseconds faster with the minified code :)
+
+<img src="https://github.com/ralfz123/CATCH-YOUR-LAUGH--PWA/tree/master/readme/seo-optimisations.png" width=400px />
+Added robots.txt and sitemap.xml, because of SEO. Although it was 100%, it can also be improved ;)
+
+PWA statics... Because the manifest don't loaded correctly, it isn't installable. I have to take a look at this. because the service worker don't work at the moment, the manifest cannot be read.
+<img src="https://github.com/ralfz123/CATCH-YOUR-LAUGH--PWA/tree/master/readme/pwa-26-3.png" width=400px />
 
 ### Serviceworker
 first time I work with serviceworker and tooling

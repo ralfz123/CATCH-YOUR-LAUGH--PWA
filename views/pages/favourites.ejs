@@ -26,7 +26,11 @@
 
             <div>
               <a href="/favourites/<%- id %>" class="checkBtn"></a>
-              <form action="/" method="POST">
+              <form action="/favourites" method="POST">
+                <input type="hidden" value="<%- cat%>" name="cat" />
+                <input type="hidden" value="<%- setup%>" name="setup" />
+                <input type="hidden" value="<%- punchline%>" name="punchline" />
+                <input type="hidden" value="<%- id%>" name="id" />
                 <button class="deleteBtn" type="submit"></button>
               </form>
             </div>
@@ -39,3 +43,5 @@
     </main>
 
     <%- include ('../partials/footer') %>
+  </body>
+</html>

@@ -3,7 +3,10 @@ function findObject(id, favouritesArray) {
   const correctObject = favouritesArray.find((object) => {
     return object.id == id;
   });
-  return correctObject;
+  const index = favouritesArray.indexOf(correctObject);
+  // console.log(index);
+  return index
+  // return correctObject;
 }
 
 module.exports = findObject;

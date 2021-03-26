@@ -488,7 +488,7 @@ main section#combo-generator form:nth-child(2) {
 #favourites ol li .deleteBtn:hover {
   box-shadow: 0 0 3px 1px #dc1010;
   transform: none;
-  cursor: not-allowed;
+  /* cursor: not-allowed; */
 }
 
 #favourites ol li .checkBtn:hover {

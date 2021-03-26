@@ -7,6 +7,7 @@ router
   .post('/', render.likeCombo)
   .post('/anotherCombo', render.anotherFetch)
   .get('/favourites', render.getFavourites)
+  .post('/favourites', render.deleteFavouriteItem)
   .get('/favourites/:id', render.getFavouriteItem)
   // .get('/*', render.get404)
   .get('/error', render.getError)

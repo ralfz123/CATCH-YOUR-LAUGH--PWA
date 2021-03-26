@@ -46,7 +46,31 @@ function getFavourites(req, res) {
 }
 
 // Checks which object is 'deleted', find in global array and remove (splice)
-function deleteFavourite(req, res) {}
+function deleteFavouriteItem(req, res) {
+  const dataObject = {
+    cat: req.body.cat,
+    setup: req.body.setup,
+    punchline: req.body.punchline,
+    id: req.body.id,
+  };
+
+  const favDataIndex = findObject(dataObject.id, favouritesArray);
+  // if (favDataIndex) {
+  favouritesArray = filterArray(favouritesArray, favDataIndex);
+  console.log('index', favDataIndex);
+
+  function filterArray(array, objectIndex) {
+    const filteredArray = array.splice(1, objectIndex);
+    console.log('filterdArray', filteredArray);
+    return filteredArray;
+  }
+
+  res.render('pages/favourites', { favouritesArray });
+  // } else {
+  //   console.log('not found');
+  //   res.redirect('/error');
+  // }
+}
 
 function getFavouriteItem(req, res) {
   // Search id in array
@@ -121,7 +145,7 @@ module.exports = {
   likeCombo,
   anotherFetch,
   getFavourites,
-  deleteFavourite,
+  deleteFavouriteItem,
   getFavouriteItem,
   get404,
   getError,
