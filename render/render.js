@@ -60,7 +60,7 @@ function deleteFavouriteItem(req, res) {
   console.log('index', favDataIndex);
 
   function filterArray(array, objectIndex) {
-    const filteredArray = array.splice(1, objectIndex);
+    const filteredArray = array.splice(objectIndex, 1);
     console.log('filterdArray', filteredArray);
     return filteredArray;
   }
