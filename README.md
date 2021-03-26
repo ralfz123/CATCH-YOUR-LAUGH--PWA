@@ -205,7 +205,7 @@ To deploy my application I used Heroku for the first time. It's easy to use, but
 ### Performance
 <img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH--PWA/master/readme/perform-best-prac-26-3.png" width=400px />
 
-<img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH--PWA/master/readme/performance-26-3.pngg" width=400px />
+<img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH--PWA/master/readme/performance-26-3.png" width=400px />
 
 Before after minifying
 Screenshots!
