@@ -11,6 +11,8 @@
     "start": "node app.js",
     "dev": "npm run build && nodemon start",
     "build": "npm-run-all build:*",
+    "prebuild:sw": "rimraf \"public/\"",
+    "build:sw": "npm run prebuild:sw && node scripts/build-sw.js",
     "prebuild:css": "rimraf \"public/css\"",
     "build:css": "npm run prebuild:css && node scripts/build-css.js",
     "prebuild:js": "rimraf \"public/js\"",
