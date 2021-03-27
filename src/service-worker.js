@@ -2,7 +2,7 @@ const CORE_CACHE_NAME = 'site-static';
 const CORE_ASSETS = [
   // '/favourites',
   '/offline',
-  '/css/main.css',
+  'css/main.css',
   // 'https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap',
   // 'https://fonts.gstatic.com/s/quicksand/v22/6xKtdSZaM9iE8KbpRA_hJFQNYuDyP7bh.woff2',
 ];
@@ -33,11 +33,11 @@ self.addEventListener('fetch', (event) => {
   // console.log('fetch', event.request);
 
   // Saves visited pages/content and send offline page when internet is broken --> has to send offline when on home?
-  // if (
-  //   event.request.mode === 'navigate' ||
-  //   (event.request.method === 'GET' &&
-  //     event.request.headers.get('accept').includes('text/html'))
-  // ) {
+  if (
+    event.request.mode === 'navigate' ||
+    (event.request.method === 'GET' &&
+      event.request.headers.get('accept').includes('text/html'))
+  ) {
     event.respondWith(
       caches.open(CORE_CACHE_NAME).then((cache) => {
         return (
@@ -61,8 +61,11 @@ self.addEventListener('fetch', (event) => {
             })
         );
       })
-    );
-  // }
+  // '/' & '/favourites' | when online --> serve from server, but update cache (/favourites)
+  // '/' & '/favourites' | when offline --> serve from cache
+   
+      );
+  }
 });
 
 // Fetch - source: https://deanhume.com/create-a-really-really-simple-offline-page-using-service-workers/
