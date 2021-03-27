@@ -27,7 +27,7 @@ function feedbackLike() {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
     navigator.serviceWorker
-      .register('../assets/service-worker.js')
+      .register('service-worker.js')
       .then(function (registration) {
         return registration.update();
       });
