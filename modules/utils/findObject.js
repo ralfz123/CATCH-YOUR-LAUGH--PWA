@@ -1,5 +1,5 @@
-// Finds the right object that is equal to the given id parameter
-function findObject(id, favouritesArray) {
+// Finds the right object index that is equal to the given id parameter
+function findObjectIndex(id, favouritesArray) {
   const correctObject = favouritesArray.find((object) => {
     return object.id == id;
   });
@@ -8,4 +8,12 @@ function findObject(id, favouritesArray) {
   return index;
 }
 
-module.exports = findObject;
+// Finds the right object that is equal to the given id parameter
+function findObject(id, favouritesArray) {
+  const correctObject = favouritesArray.find((object) => {
+    return object.id == id;
+  });
+  return correctObject;
+}
+
+module.exports = { findObjectIndex, findObject };

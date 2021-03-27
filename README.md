@@ -44,7 +44,11 @@ To get more information about the app, for example it's APIs, check it [here](ht
 ### [Live version here :red_circle:](https://catch-your-laugh.herokuapp.com/)
 
 ## :nerd_face: Technical summary
-This app is built, using:
+This is a Progressive Web App (PWA). A number of characteristics are:
+- It has an app-like interface, through the [`manifest.json`](https://github.com/ralfz123/CATCH-YOUR-LAUGH--PWA/blob/master/src/assets/manifest.json). In the browser the app is 'installable'. Which means you can add the app to your homescreen and when you launch the app, you have an app-like interface and the default browser interface is disappeared.
+- Offline work mode - caching manager [`service-worker.js`](https://github.com/ralfz123/CATCH-YOUR-LAUGH--PWA/blob/master/src/assets/service-worker.js)
+
+This Progressive Web App is built, using:
 - [npm](https://www.npmjs.com/)
 - [Node.js server](https://nodejs.org/)
 - [Express router](https://expressjs.com/)
@@ -77,7 +81,7 @@ npm run dev
 http://localhost:5000/
 ```
 
-## :gear: Build
+## :hammer_and_pick: Build
 #### Server 
 For running the server i use the Express framework for Node.js. This is a web framework for Node.js which is good for setting up a server.
 
@@ -203,6 +207,9 @@ To deploy my application I used Heroku for the first time. It's easy to use, but
 ```
 
 ### Performance
+I wanted to check the performance before and after a couple of changes.
+
+The performance after applying of the Gulp tooling is:
 <img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH--PWA/master/readme/perform-best-prac-26-3.png" width=400px />
 
 <img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH--PWA/master/readme/performance-26-3.png" width=400px />
@@ -213,20 +220,23 @@ Though building/minifying it gets .5 seconds faster
 - It works I think 5 milliseconds faster with the minified code :)
 
 <img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH--PWA/master/readme/seo-optimisations.png" width=400px />
-Added robots.txt and sitemap.xml, because of SEO. Although it was 100%, it can also be improved ;)
+Added robots.txt and sitemap.xml, because of SEO. Although it was 100%, it can also be improved ;) The 2 files add content and intelligence to the application, so a search engine like Google can find better your website.
 
 PWA statics... Because the manifest don't loaded correctly, it isn't installable. I have to take a look at this. because the service worker don't work at the moment, the manifest cannot be read.
 <img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH--PWA/master/readme/pwa-26-3.png" width=400px />
 
-### Serviceworker
-first time I work with serviceworker and tooling
+
+### !
+Some stats are things I cannot fix, because i don't have the rights to change them. Like this issue below, it lays on the server.
+<img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH--PWA/master/readme/server-issue.png" width=400px />
+
 
 ## Challenges / Inventions:
 Learned:  
 - Module.exports in Node.js
 
 ### Job story
-#### Serverworker --- cache
+#### Service-worker 
 At the moment I want to add a new favourite, it is added to a global array. But at the moment when the list where the page lives is `/favourites`. When the app starts (and during the app), this page **must not** be added to the cache. Because when you hit the like button to create a new fav combo and you want to see the fav list, you click on MY FAVOURITES and go to `/favourites`. The service worker takes then this page from the cache and you see an empty fav list. Therefore you need to whitelist `/favourites` so this page won't be cached, but retrieved from the server. But on the other side I want to see my fav list when I am offline.
 
 All pages will be cached, excluded the /favourites. All pages will be served from the server when online. While the user is offline, then the pages will be shown whose are cached when the user was online. The pages whose are not cached and when the user wants to enter them, he receives an offline page.
@@ -269,7 +279,7 @@ Feedback user:
     - [ ] Cache don't save `/favourites`, because new items are being added through user
     - [ ] Serve offline pages for features that are not cached
 - [x] Put router in modules
-- [ ] Put render in modules
+- [x] Put render in modules
 - [ ] Dark theme client side JS
 
 

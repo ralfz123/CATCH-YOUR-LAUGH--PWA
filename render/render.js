@@ -1,8 +1,10 @@
 let favouritesArray = require('../modules/data.js');
 const getData = require('../modules/utils/fetch.js');
-const findObject = require('../modules/utils/findObject.js');
+const {
+  findObjectIndex,
+  findObject,
+} = require('../modules/utils/findObject.js');
 const { clickLikeBtn, checkDuplicateFav } = require('../modules/like.js');
-const url = require('url'); // built-in utility
 
 async function getHome(req, res) {
   // Get data through fetch and put in a variable called dataAll
@@ -47,8 +49,7 @@ function deleteFavouriteItem(req, res) {
     id: req.body.id,
   };
 
-  const favDataIndex = findObject(dataObject.id, favouritesArray);
-  console.log('index', favDataIndex);
+  const favDataIndex = findObjectIndex(dataObject.id, favouritesArray);
 
   if (favDataIndex >= 0) {
     favouritesArray = filterArray(favouritesArray, favDataIndex);

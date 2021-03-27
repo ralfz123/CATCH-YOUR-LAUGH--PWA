@@ -400,7 +400,7 @@ main section#combo-generator form:nth-child(2) {
 
 #favourites .deleteAllBtn:hover {
   background-color: #820202;
-  cursor: not-allowed;
+  /* cursor: not-allowed; */
 }
 
 #favourites ol {
