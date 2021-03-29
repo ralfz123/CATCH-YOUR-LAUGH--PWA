@@ -701,6 +701,7 @@ main section#error h2 {
 
 main section#offline {
   text-align: center;
+  margin: 0 auto;
 }
 
 main section#offline > p {
