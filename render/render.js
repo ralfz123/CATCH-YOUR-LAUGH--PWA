@@ -33,7 +33,15 @@ function likeCombo(req, res) {
 
 // Redirects to the home page
 async function anotherFetch(req, res) {
-  res.redirect(req.originalUrl.split('another?').shift());
+    // Get data through fetch and put in a variable called dataAll
+    const dataAll = await getData();
+
+    // Declare data variables for better use in .ejs files
+    const catData = dataAll.filteredDataCat;
+    const jokeData = dataAll.filteredDataJokes;
+  
+    // Render data
+    res.render('index.ejs', { catData, jokeData });
 }
 
 function getFavourites(req, res) {
