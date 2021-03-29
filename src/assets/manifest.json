@@ -3,7 +3,7 @@
   "short_name": "CYL 😹",
   "theme_color": "#2c28bb",
   "background_color": "#f7f7f7 ",
-  "display": "fullscreen",
+  "display": "standalone",
   "scope": "/",
   "start_url": "/",
   "icons": [
