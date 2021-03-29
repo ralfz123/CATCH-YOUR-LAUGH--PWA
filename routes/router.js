@@ -5,7 +5,7 @@ const render = require('../render/render.js');
 router
   .get('/', render.getHome)
   .post('/', render.likeCombo)
-  .get('/another', render.anotherFetch)
+  .post('/another', render.anotherFetch)
   .get('/favourites', render.getFavourites)
   .post('/favourites', render.deleteFavouriteItem)
   .get('/favourites/:id', render.getFavouriteItem)
