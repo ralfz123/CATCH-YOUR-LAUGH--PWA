@@ -231,6 +231,8 @@ PWA statics... Because the manifest don't loaded correctly, it isn't installable
 Some stats are things I cannot fix, because i don't have the rights to change them. Like this issue below, it lays on the server.
 <img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH--PWA/master/readme/server-issue.png" width=400px />
 
+Powermapper gives me this result: https://try.powermapper.com/Demo/Report/9a14f231-943a-4d9f-96d0-b65b10f75250
+
 
 ## Challenges / Inventions:
 Learned:  
