@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap'); */
 
 /* ------------------------------------------- */
 /*                   OVERALL                   */
@@ -15,6 +15,47 @@ html {
   --font-headers: 'Quicksand', sans-serif;
   --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-family: var(--font-headers);
+}
+
+/* local fonts */
+/* quicksand-regular - latin */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/quicksand-v22-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../assets/fonts/quicksand-v22-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../assets/fonts/quicksand-v22-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../assets/fonts/quicksand-v22-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../assets/fonts/quicksand-v22-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../assets/fonts/quicksand-v22-latin-regular.svg#Quicksand') format('svg'); /* Legacy iOS */
+}
+/* quicksand-500 - latin */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../assets/fonts/quicksand-v22-latin-500.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../assets/fonts/quicksand-v22-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../assets/fonts/quicksand-v22-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../assets/fonts/quicksand-v22-latin-500.woff') format('woff'), /* Modern Browsers */
+       url('../assets/fonts/quicksand-v22-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../assets/fonts/quicksand-v22-latin-500.svg#Quicksand') format('svg'); /* Legacy iOS */
+}
+/* quicksand-600 - latin */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../assets/fonts/quicksand-v22-latin-600.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../assets/fonts/quicksand-v22-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../assets/fonts/quicksand-v22-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../assets/fonts/quicksand-v22-latin-600.woff') format('woff'), /* Modern Browsers */
+       url('../assets/fonts/quicksand-v22-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../assets/fonts/quicksand-v22-latin-600.svg#Quicksand') format('svg'); /* Legacy iOS */
 }
 
 /* ------------------------------------------- */
@@ -40,7 +81,7 @@ header {
 }
 
 header h1 {
-  font-weight: 100;
+  font-weight: 400;
 }
 
 /* ------------------------------------------- */
@@ -216,7 +257,7 @@ main section#combo-generator form:nth-child(2) {
 }
 
 #jokes #punchline {
-  font-weight: 700;
+  font-weight: 600;
   display: block;
   font-style: italic;
 }
@@ -647,7 +688,7 @@ main section#error h3 a {
   border-radius: 0;
   background: none;
   color: black;
-  font-weight: 100;
+  font-weight: 400;
   padding: 0;
   text-decoration: none;
   border: none;
@@ -731,7 +772,7 @@ main section#offline li:hover {
 }
 
 main section#offline li:hover a {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 main section#offline li:hover a:before {

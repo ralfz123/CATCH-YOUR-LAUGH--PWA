@@ -23,17 +23,12 @@ _Progressive Web Apps, a course of the minor Web Design & Development. It is a m
 ## :rocket: Purpose of Project
 In this course I will convert the client side web application previously made Web App From Scratch into a server side rendered application. I also add functionalities based on the Service Worker and turn the application into a Progressive Web App. Ultimately I'm going to implement a series of optimisations to improve the performance of the application. All the basic parts covered in this course are very useful to know when you later choose to make an app using a framework. All these parts are (almost) all automated in a framework and are therefore done for you. So it is helpful to know exactly how those parts work.
 
-### Plan van Action
-1. Copy the WAFS app in this repo :white_check_mark:
-2. Delete the unnecessary features :white_check_mark:
-3. Install npm, Node.js and Express :white_check_mark:
-4. Refactor the code to a server side version (with Nodejs & Express) :white_check_mark:
-5. Check if the application works :white_check_mark:
-
 ## :heart_eyes: Concept
-This application is a _rebuild_ from the [**CAT**CH YOUR LAUGH-application](https://github.com/ralfz123/CATCH-YOUR-LAUGH). Here I focus on the client- and serverside rendering and am I able to create a **P**rogressive **W**eb **A**pp.
-
-<img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH/master/assets/README/app-screenshot-2.png" width=400px />
+This application is a _rebuild_ from the [**CAT**CH YOUR LAUGH](https://github.com/ralfz123/CATCH-YOUR-LAUGH)-application. Here I focus on the client- and serverside rendering and am I able to create a **P**rogressive **W**eb **A**pp.
+<figure>
+    <img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH/master/assets/README/app-screenshot-2.png" width=400px />
+    <figcaption>UI screenshot</figcaption>
+</figure>
 
 #### Features
 - By clicking on the 'ANOTHER COMBO' button you can see a different combination of a cat image and a joke
@@ -41,8 +36,6 @@ This application is a _rebuild_ from the [**CAT**CH YOUR LAUGH-application](http
 - Create a favourites list with your favourite combinations of a cat image and a joke
 
 To get more information about the app, for example it's APIs, check it [here](https://github.com/ralfz123/CATCH-YOUR-LAUGH/blob/master/README.md#heart_eyes-concept).
-
-### [Live version here :red_circle:](https://catch-your-laugh.herokuapp.com/)
 
 ## :nerd_face: Technical summary
 This is a Progressive Web App (PWA). A number of characteristics are:
@@ -57,34 +50,9 @@ This Progressive Web App is built, using:
 - [Gulp tooling](https://gulpjs.com/)
 - [Heroku deployment](https://www.heroku.com/nodejs)
 
-## :gear: Installation
-1. Clone the repository:  
-```
-git clone https://github.com/ralfz123/progressive-web-apps-2021.git
-```
-
-2. Install dependencies   
-```
-npm install
-```
-
-3. To run the app   
-```
-npm run start
-```
-
-4. To run the app in developer mode (with nodemon)
-```
-npm run dev
-```
-5. Go to [localhost](http://localhost:5000/) in the browser and voilà :sparkles:
-```
-http://localhost:5000/
-```
-
 ## :hammer_and_pick: Build
 #### Server 
-For running the server i use the Express framework for Node.js. This is a web framework for Node.js which is good for setting up a server.
+For running the server I use the Express framework for Node.js. This is a web framework for Node.js which is good for setting up a server.
 
 1. Require Express
 ```
@@ -98,12 +66,8 @@ const app = express();
 
 Config your Express-app
 ```js
-app.use(express.static('static')); // Declare your static folder
-
-// Declare folders in the static folder for easy use
-app.use('/styles', express.static(__dirname + 'static/styles'));
-app.use('/scripts', express.static(__dirname + 'static/scripts'));
-app.use('/icons', express.static(__dirname + 'static/icons'));
+ // Declare your static folder
+app.use(express.static('public'));
 
 // Run the server on a port
 app.listen(5000, () => console.log(`App is running on port 5000`));
@@ -136,9 +100,9 @@ In the `.ejs` file
 ```
 
 ### Building
-For the building I used Gulp. It was for me the first time I used a bundler/tooling. At the beginning I struggled a lot with building/minifying my code, because I didn't get it. But now I understand what tooling is. Tooling is a feature for the developer to smart and fast build your application. I used the order from: 1) build files 2) start nodemon server. For deploying I used npm run build and then it empties the folders in `/public` and then the files were build (minified). Here are my npm scripts in the [package.json](https://github.com/ralfz123/CATCH-YOUR-LAUGH--PWA/blob/master/package.json).
+For the building I use Gulp. It was for me the first time I used a bundler/tooling. At the beginning I struggled a lot with building/minifying my code, because I didn't get it. But now I understand what tooling is. Tooling is a feature for the developer to smart and fast build your application. As npm script I used a nice script: `"dev": "build && nodemon start"`. This a script I used a lot during development. It means that the app firstly is building and secondly it starts the nodemon server. For building the app before deploying, I used `npm run build` and then it first empties the folders in `/public` and then the files were build (minified). Here are my npm scripts in the [package.json](https://github.com/ralfz123/CATCH-YOUR-LAUGH--PWA/blob/master/package.json).
 
-```
+```json
 "start": "node app.js",
 "dev": "build && nodemon start",
 "build": "npm-run-all build:*",
@@ -198,7 +162,7 @@ return gulp
 ```
 
 ### Deploying
-To deploy my application I used Heroku for the first time. It's easy to use, but my deployment had some issues with don't `GET` the `path` and the `favicon`. Now that issue is fixed to replace the `PORT` in my `app.js` with `process.env.PORT || 5000`.
+To deploy my application I used Heroku for the first time. It's easy to use, but my deployment had some issues with don't `GET` the `path` and the `favicon`. Now that issue is fixed to replace the `PORT` in my `app.js` with `process.env.PORT || 5000`. Here is a roadmap of deploying your application to Heroku via git command Heroku CLI.
 
 ```
 1. heroku create // Create heroku CLI
@@ -207,31 +171,101 @@ To deploy my application I used Heroku for the first time. It's easy to use, but
 4. catch-your-laugh.herokuapp.com // Build is done and deployed
 ```
 
-### Performance
-I wanted to check the performance before and after a couple of changes.
+### Critical Render Path
 
-The performance after applying of the Gulp tooling is:
+#### Lighthouse test
+
+<img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH--PWA/master/readme/performance-26-3.png" width=600px />
+
+**First Contentful Paint - 1,4s**
+First Contentful Paint (FCP) is when the browser renders the first bit of content from the DOM, providing the first feedback to the user that the page is actually loading. The question "Is it happening?" is "yes" when the first contentful paint completes.
+
+**Speed Index - 1,4 s**
+Speed Index measures how quickly content is visually displayed during page load. Lighthouse first captures a video of the page loading in the browser and computes the visual progression between frames.
+
+**Largest Contentful Paint - 2,3s**
+Largest Contentful Paint (LCP) is a Core Web Vitals metric and measures when the largest content element in the viewport becomes visible. It can be used to determine when the main content of the page has finished rendering on the screen.
+
+**Time to Interactive - 1,6 s**
+TTI measures how long it takes a page to become fully interactive. A page is considered fully interactive when the page displays useful content, which is measured by the First Contentful Paint, and event handlers are registered for most visible page elements.
+
+**Total Blocking Time - 50 ms**
+The Total Blocking Time (TBT) metric measures the total amount of time between First Contentful Paint (FCP) and Time to Interactive (TTI) where the main thread was blocked for long enough to prevent input responsiveness.
+
+**Cumulative Layout Shift - 0,51**
+CLS measures the sum total of all individual layout shift scores for every unexpected layout shift that occurs during the entire lifespan of the page.
+
+### Optimisations
+
+#### Using local fonts
+First I was fetching the custom fonts from an API (Google Fonts), but that costs too much. Therefore I choose to use local fonts to reduce the size of the fetched style sheets plus the application does not have to download anything from the internet again. For this optimisation I used [Google Webfonts Helper](https://google-webfonts-helper.herokuapp.com/fonts) to serve the fonts locally.
+
+After that have done, the performance is improved by 1 point -_- .
+#### Building files
+Unfortunately I don't have a screenshot of the difference between before and after implementing the building files.
+I raised at least .5 seconds faster.
+
 <img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH--PWA/master/readme/perform-best-prac-26-3.png" width=400px />
 
-<img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH--PWA/master/readme/performance-26-3.png" width=400px />
-
-Before & after minifying
-Screenshots!
-Though building/minifying it gets .5 seconds faster
-- It works I think 5 milliseconds faster with the minified code :)
-
+#### Added robots.txt + sitemap.xml
 <img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH--PWA/master/readme/seo-optimisations.png" width=400px />
-Added robots.txt and sitemap.xml, because of SEO. Although it was 100%, it can also be improved ;) The 2 files add content and intelligence to the application, so a search engine like Google can find better your website.
 
-PWA statics... Because the manifest don't loaded correctly, it isn't installable. I have to take a look at this. because the service worker don't work at the moment, the manifest cannot be read.
-<img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH--PWA/master/readme/pwa-26-3.png" width=400px />
+Added robots.txt and sitemap.xml, because of SEO. Although it was 100%, it can also be improved ;) . The 2 files add content and intelligence to the application, so a search engine like Google can find better your website.
+
+### PWA
+
+<details>
+<summary>Before</summary>
+Because the manifest don't loaded correctly, it wasn't installable. I had to take a look at this, because the service worker didn't work at that moment, the manifest cannot be read.
+
+<img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH--PWA/master/readme/pwa-26-3.png" style="display:block;" width=400px />
+</details>
 
 
-### !
-Some stats are things I cannot fix, because i don't have the rights to change them. Like this issue below, it lays on the server.
+<details>
+<summary>After</summary>
+Now the manifest.json and service-worker works correctly. So now the pwa statistics are much better 🔥 . But there are some things I don't understand:
+
+It says "Is not configured for a custom splash screen. Failures: Manifest does not have `background_color`." I don't like and understand this, because I do have a background_color in the manifest. So this is very weird.
+
+<img src="readme/pwa-30-3.png" width=500px />
+
+</details>
+
+### Things I cannot fix
+Some statistics are things I cannot fix, because I don't have the rights to change them. Like this issue below, it lays on the server.
+
 <img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH--PWA/master/readme/server-issue.png" width=400px />
 
-Powermapper gives me this result: https://try.powermapper.com/Demo/Report/9a14f231-943a-4d9f-96d0-b65b10f75250
+### Online tests
+
+<details>
+<summary>Before local fonts</summary>
+
+##### WebpageTest
+
+<img src="readme/before-localfonts.png" width=800px />
+
+##### Powermapper
+
+<img src="readme/pm-before-localfonts.png" width=800px />
+
+</details>
+
+
+<details>
+<summary>After local fonts</summary>
+
+##### WebpageTest
+
+<img src="readme/after-localfonts.png" width=800px />
+
+##### Powermapper
+
+<img src="readme/pm-after-localfonts.png" width=800px />
+
+</details>
+
 
 ## Job story
 ### Service-worker 
@@ -247,6 +281,31 @@ Learned:
 - What is caching
 - Manifest.json
 - PWA statistics and performance info (helper to improve)
+
+## :gear: Installation
+1. Clone the repository:  
+```
+git clone https://github.com/ralfz123/CATCH-YOUR-LAUGH--PWA.git
+```
+
+2. Install dependencies   
+```
+npm install
+```
+
+3. To run the app   
+```
+npm run start
+```
+
+4. To run the app in developer mode (with nodemon)
+```
+npm run dev
+```
+5. Go to [localhost](http://localhost:5000/) in the browser and voilà :sparkles:
+```
+http://localhost:5000/
+```
 
 ## To-Do's :pencil:
 <details>
