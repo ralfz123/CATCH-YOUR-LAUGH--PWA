@@ -12,6 +12,5 @@ router
   .post('/favourites/deleteAll', render.deleteAllFavourites)
   .get('/error', render.getError)
   .get('/offline', render.getOffline);
-  // .get('/*', render.get404)
 
 module.exports = router;

@@ -82,7 +82,7 @@ function getFavouriteItem(req, res) {
     // Show correct id object from array
     res.render('pages/favouriteItem', { favData });
   } else {
-    // res.redirect('/error');
+    res.redirect('/error');
   }
 }
 
