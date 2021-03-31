@@ -233,16 +233,20 @@ Some stats are things I cannot fix, because i don't have the rights to change th
 
 Powermapper gives me this result: https://try.powermapper.com/Demo/Report/9a14f231-943a-4d9f-96d0-b65b10f75250
 
+## Job story
+### Service-worker 
+At the moment I want to add a new favourite, it is added to a global array. But at the moment when the list where the page lives is `/favourites`. When the app starts (and during the app), this page **must not** be added to the cache. Because when you hit the like button to create a new fav combo and you want to see the fav list, you click on MY FAVOURITES and go to `/favourites`. The service worker takes then this page from the cache and you see an empty fav list. Therefore you need to whitelist `/favourites` so this page won't be cached, but retrieved from the server. But on the other side I want to see my fav list when I am offline.
+
+All pages will be cached, excluded the /favourites. All pages will be served from the server when online. While the user is offline, then the pages will be shown whose are cached when the user was online. The pages whose are not cached and when the user wants to enter them, he receives an offline page.
 
 ## Challenges / Inventions:
 Learned:  
 - Module.exports in Node.js
-
-### Job story
-#### Service-worker 
-At the moment I want to add a new favourite, it is added to a global array. But at the moment when the list where the page lives is `/favourites`. When the app starts (and during the app), this page **must not** be added to the cache. Because when you hit the like button to create a new fav combo and you want to see the fav list, you click on MY FAVOURITES and go to `/favourites`. The service worker takes then this page from the cache and you see an empty fav list. Therefore you need to whitelist `/favourites` so this page won't be cached, but retrieved from the server. But on the other side I want to see my fav list when I am offline.
-
-All pages will be cached, excluded the /favourites. All pages will be served from the server when online. While the user is offline, then the pages will be shown whose are cached when the user was online. The pages whose are not cached and when the user wants to enter them, he receives an offline page.
+- Application tab in Chrome Inspector
+- Service worker
+- What is caching
+- Manifest.json
+- PWA statistics and performance info (helper to improve)
 
 ## To-Do's :pencil:
 <details>
