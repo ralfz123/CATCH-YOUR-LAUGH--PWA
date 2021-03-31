@@ -270,7 +270,7 @@ Some statistics are things I cannot fix, because I don't have the rights to chan
 
 ## Job story
 ### Service-worker 
-> _Because of having not enough time and my application crashed a lot of times, I deciced to only serve an offline page while the user is offline. Secondly the cache don't work in Chrome, because there I dont have a Secured connection_.
+> _Because of having not enough time and my application crashed a lot of times, I deciced to only serve an offline page while the user is offline._
 
 At the moment I want to add a new favourite, it is added to a global array. But at the moment when the list where the page lives is `/favourites`. When the app starts (and during the app), this page **must not** be added to the cache. Because when you hit the like button to create a new fav combo and you want to see the fav list, you click on MY FAVOURITES and go to `/favourites`. The service worker takes then this page from the cache and you see an empty fav list. Therefore you need to whitelist `/favourites` so this page won't be cached, but retrieved from the server. But on the other side I want to see my fav list when I am offline.
 
