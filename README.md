@@ -177,23 +177,24 @@ To deploy my application I used Heroku for the first time. It's easy to use, but
 
 <img src="https://raw.githubusercontent.com/ralfz123/CATCH-YOUR-LAUGH--PWA/master/readme/performance-26-3.png" width=600px />
 
-**First Contentful Paint - 1,4s**
+**First Contentful Paint - 0,9 s**
 First Contentful Paint (FCP) is when the browser renders the first bit of content from the DOM, providing the first feedback to the user that the page is actually loading. The question "Is it happening?" is "yes" when the first contentful paint completes.
 
-**Speed Index - 1,4 s**
+**Speed Index - 0,9 s**
 Speed Index measures how quickly content is visually displayed during page load. Lighthouse first captures a video of the page loading in the browser and computes the visual progression between frames.
 
-**Largest Contentful Paint - 2,3s**
+**Largest Contentful Paint - 1,5 s**
 Largest Contentful Paint (LCP) is a Core Web Vitals metric and measures when the largest content element in the viewport becomes visible. It can be used to determine when the main content of the page has finished rendering on the screen.
 
-**Time to Interactive - 1,6 s**
+**Time to Interactive - 1,5 s**
 TTI measures how long it takes a page to become fully interactive. A page is considered fully interactive when the page displays useful content, which is measured by the First Contentful Paint, and event handlers are registered for most visible page elements.
 
-**Total Blocking Time - 50 ms**
+**Total Blocking Time - 0 ms**
 The Total Blocking Time (TBT) metric measures the total amount of time between First Contentful Paint (FCP) and Time to Interactive (TTI) where the main thread was blocked for long enough to prevent input responsiveness.
 
-**Cumulative Layout Shift - 0,51**
+**Cumulative Layout Shift - 0,001**
 CLS measures the sum total of all individual layout shift scores for every unexpected layout shift that occurs during the entire lifespan of the page.
+
 
 ### Optimisations
 
@@ -257,7 +258,7 @@ Some statistics are things I cannot fix, because I don't have the rights to chan
 <summary>After local fonts</summary>
 
 ##### WebpageTest
-
+[link](https://www.webpagetest.org/result/210331_AiDc36_84645bf409ed938e3ddb446a2689b400/)
 <img src="readme/after-localfonts.png" width=800px />
 
 ##### Powermapper
@@ -269,6 +270,8 @@ Some statistics are things I cannot fix, because I don't have the rights to chan
 
 ## Job story
 ### Service-worker 
+> _Because of having not enough time and my application crashed a lot of times, I deciced to only serve an offline page while the user is offline. Secondly the cache don't work in Chrome, because there I dont have a Secured connection_.
+
 At the moment I want to add a new favourite, it is added to a global array. But at the moment when the list where the page lives is `/favourites`. When the app starts (and during the app), this page **must not** be added to the cache. Because when you hit the like button to create a new fav combo and you want to see the fav list, you click on MY FAVOURITES and go to `/favourites`. The service worker takes then this page from the cache and you see an empty fav list. Therefore you need to whitelist `/favourites` so this page won't be cached, but retrieved from the server. But on the other side I want to see my fav list when I am offline.
 
 All pages will be cached, excluded the /favourites. All pages will be served from the server when online. While the user is offline, then the pages will be shown whose are cached when the user was online. The pages whose are not cached and when the user wants to enter them, he receives an offline page.
