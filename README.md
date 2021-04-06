@@ -378,7 +378,7 @@ Credits to [Joost Faber](https://github.com/joostf) && [Koop](https://github.com
 
 - Youtube (n.d.) Registering a Service Worker - The Net Ninja. Retrieved 15 March 2021 from https://www.youtube.com/watch?v=6s697AJdlB8
 
-sw - 15 march - https://developers.google.com/web/fundamentals/primers/service-workers
+- Google Developers (n.d.) Service Worker - Google Developers. Retrieved 15 March 2021 from https://developers.google.com/web/fundamentals/primers/service-workers
 
 ## :cop: License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
