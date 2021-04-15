@@ -175,7 +175,7 @@ To deploy my application I used Heroku for the first time. It's easy to use, but
 
 #### Lighthouse test
 
-<img src="readme/30-3-v2.png" width=600px />
+<img src="readme/15-4-v3.png" width=600px />
 
 **First Contentful Paint - 0,9 s**
 First Contentful Paint (FCP) is when the browser renders the first bit of content from the DOM, providing the first feedback to the user that the page is actually loading. The question "Is it happening?" is "yes" when the first contentful paint completes.
